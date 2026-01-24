@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
             <h4 className="text-white text-lg font-black uppercase">Ragnarok Fest</h4>
           </div>
           <p className="text-[#544c3b] text-sm text-center md:text-left">
-            © 2024 College Name. All rights reserved.<br/>
+            © 2026 College Name. All rights reserved.<br/>
             Crafted for the Gods of Tech.
           </p>
         </div>

@@ -4,27 +4,14 @@ import type { EventCard as EventCardType } from '../../../../shared/types';
 import './Events.css';
 
 const eventsData: EventCardType[] = [
-  {
-    icon: 'bolt',
-    title: 'The Labyrinth of Logic',
-    category: 'Coding Challenge',
-    difficulty: 'ELITE',
-    teamSize: 'Solo / Duo',
-  },
-  {
-    icon: 'settings',
-    title: 'Forge of Hephaestus',
-    category: 'Robotics Competition',
-    difficulty: 'LEGENDARY',
-    teamSize: 'Team of 3',
-  },
-  {
-    icon: 'palette',
-    title: 'Vision of Aphrodite',
-    category: 'Design Sprint',
-    difficulty: 'IMMORTAL',
-    teamSize: 'Solo',
-  },
+  // Commerce-first
+  { icon: 'grade', title: 'Best Manager', category: 'Commerce', difficulty: 'PRO', teamSize: 'Team of 2' },
+  { icon: 'attach_money', title: 'Finance', category: 'Commerce', difficulty: 'PRO', teamSize: 'Team of 2' },
+  // IT / Technical
+  { icon: 'code', title: 'Coding Challenge', category: 'IT', difficulty: 'ELITE', teamSize: 'Team of 2' },
+  { icon: 'sports_esports', title: 'E-Sports', category: 'IT', difficulty: 'ELITE', teamSize: 'Team' },
+  // Variety
+  { icon: 'theaters', title: 'Variety Event', category: 'Variety', difficulty: 'OPEN', teamSize: 'Solo / Group' }
 ];
 
 const Events: React.FC = () => {

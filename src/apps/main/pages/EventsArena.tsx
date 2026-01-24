@@ -11,7 +11,6 @@ interface EventCardData {
   id: number;
   title: string;
   description: string;
-  prize: string;
   venue: string;
   category: string;
   image: string;
@@ -19,74 +18,33 @@ interface EventCardData {
 }
 
 const eventsData: EventCardData[] = [
-  {
-    id: 1,
-    title: 'The Code of Odin',
-    description: "Decrypt the ancient algorithms and solve the logic of the All-Father in this high-stakes competitive programming saga.",
-    prize: '50,000 Gold Credits',
-    venue: 'The High Hall (Lab 101)',
-    category: 'Coding',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBKXq_nG-T09CvXluBxrbStxao8cgVuxOh35UP-hsxkA_GtQQa0QBBE26D8JtFSMdv5XQldKvZgSkh5S6_eZ674yq4gjBp3BBUPajAx2DCM-Z_hsKJskai-HvzcHS0AMs_oRrBqShLjOBzaHmGt9acliT-7tqKpxgzQxD4gDCoilnArQk6PT43TZLNu-S-wxq5EkJccmbvdakmdlaTkq1JbJAY4A1-tB-0TXu0mhpWV4JhptAa-n5F_DPsjBWK_e938G3Bq4JwiYIZZ',
-    imageAlt: 'Digital runes and circuits flowing like a river of gold'
-  },
-  {
-    id: 2,
-    title: "Thor's Hammer-Bot",
-    description: 'Forge metal warriors and pit them in a battle of torque and titanium within the electrified combat arena.',
-    prize: '75,000 Gold Credits',
-    venue: 'Mjolnir Plaza (Arena A)',
-    category: 'Robotics',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDiyA7yBR6Dxtarf39fYUGkZHwz7oNU5PchT8q3fvhfeNiC8K9cISDycPVaN8lAKWnjCJUwGaNIp14UDbl0BemESGHgDmOmgIfH9197ZhUhsfbcEbJzy2oJd0LX0fEJJekMZrh2XmpKeflvqGTWe-b_ymKNhxv5invZOij7JkQv5x9h3g8C5aD6d51lBCGMQNfqmrUJDI64iRkge0pI02sBsUMEw6uA41hWry7q3MWezMfoPL5jRUiO2da1-3_7wRr0Rbmy29xp-Y4A',
-    imageAlt: 'A robotic hammer striking a glowing anvil with sparks'
-  },
-  {
-    id: 3,
-    title: 'Valhalla Arena',
-    description: "Only the elite will ascend. Battle through the ranks of Midgard's best gamers in the ultimate E-Sports showdown.",
-    prize: '100,000 Gold Credits',
-    venue: 'The Bifrost Hub',
-    category: 'Gaming',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRODD7nRLUqjrCAYXJNL19wTTDRXO34eV09BSeHn-nb8kV-Qm9FcKsXRNkou7l45nl28Od4CY_WfbWS3pkIoXcOd14gprNBXauff_hN_A5cf08di-7mLRBm4IywcGa73mGLafM517Lt4PZ4ms9pLnjAsmhmW0U52RewdH9khcDN0BCwrs64MPUTKIrlLeByYtb7EkOR2kLMdmY4WxqWgIiZWXB_LeDOLaJSqTBWmOPvlwjP7obtk0LS7atSelzE2vv36yGFx_HhxSj',
-    imageAlt: 'An ethereal digital throne surrounded by gaming monitors'
-  },
-  {
-    id: 4,
-    title: "Loki's Logic Maze",
-    description: "A labyrinth of trickery and traps. Bypass the Trickster God's security systems to claim the prize.",
-    prize: '40,000 Gold Credits',
-    venue: 'The Hidden Cave',
-    category: 'Cybersecurity',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB3sJcz3hp7bcxJ8XvH171yggEAS766Ws6hCd_YUQxusbzxRoLpZBBc1xgTWpNqbfHTummj18E1K-AlrLSknckJIbXpl6n06LD6qRJTDDpb_HkkrSa8mGinDMtQC4ZtiTdXD3SwSsjXX2NpInt8oqUVGwRAEhX8DduP2rDuUUwPiQIXHRcw04x2AuRNaRpeX9dBx3lRMVbX8O37iwLL9URPhLjF4rimcwN1BO0sBl4KuRwp0U9PMgmoFAiOfB52PucEitbiJ90SXEfD',
-    imageAlt: 'A shadowy maze pattern with a digital lock icon'
-  },
-  {
-    id: 5,
-    title: "Heimdall's Watch",
-    description: 'Train models to see all and know all. Build an AI capable of guarding the realm against unseen threats.',
-    prize: '60,000 Gold Credits',
-    venue: 'Observatory Gate',
-    category: 'AI / ML',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyoeAhOidb4tkYFOEHAjAuGA3iOkxmQLOzpSbpcj6ZzwWi3_9yhI1bB-F_UnNfwl2-lE9C2KNQmX5GBKIWwRhnouvx66gEzsDkGSugbW6WHg4CkexRAiiMZp-jmOFrm9MjYfy4fiM7ykxHMtVQpY31DXd7ki7I1yz_4Oz412DScxarxNFDG5SEVPCdCvgKkPnA9prAi3nHa5gMCF_qgJhAcp9WWJjOqG7sdJA-_cC4Qbk_5sw3QoW6eTv22veSbtibZfhv3JDT-CdT',
-    imageAlt: 'A glowing eye watching over a digital landscape'
-  },
-  {
-    id: 6,
-    title: "Freya's Design Loom",
-    description: 'Weave together beauty and functionality. Create the UI/UX that will guide the gods through the digital age.',
-    prize: '30,000 Gold Credits',
-    venue: 'The Silk Atelier',
-    category: 'Design',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB_aS7IdyiQ9lDc-guOplr7wNnfBhm2NS1tNqGvOgxTuEqaXH26BwyrfcVPr1rc9HatvWfK9OQXHMYvRvCXZ1_MbcmExo-9yu085ZqEuLiKgXx1v--VgLDNJFa0ocIfj85QBkolJQT7UObpkBWUwbYSp2qCrJRJfySrq8G1OOZJ1cb9kTV3vzlZAPFUZGLMquqtto7hkVnGlKV1yguBhnzDAf62F7HRfLuD__qzVWJhCGbBBRtalXf9hFOiyRr-sOIjOJNJsaMCyuCG',
-    imageAlt: 'Abstract golden silk weaving through a circuit board'
-  }
+  // Commerce & Management (5)
+  { id: 1, title: 'Best Manager', description: 'Inter-college management challenge.', venue: 'Main Hall', category: 'Commerce', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlpOL5H-EQtdnU7JAFVgncgGwi3xC1sq8yQC-5CfNPwUBUmV-4hiOYEQfTFkZOp-0y3IXI-rDVWYR_x7Q_KuGBdhWbDGjFCOn16bdT0_d36sovYliF19nc1wnLGwODR4HbEbn51sLP-6OloWwF4rHQj4qu__Z-jYy7lu5nGBKCEwAADPSyhvEo_Y8WKzzVCD_ZwIcBJnZdFOw5ajRFU3pEdjNPtlW_FS3f1p4ycXS5xP7HWM2c10EQY5qdxLGdvEElHnXH_PrHsDRc', imageAlt: 'Best Manager' },
+  { id: 2, title: 'Finance', description: 'Finance case challenge and trading simulations.', venue: 'Finance Lab', category: 'Commerce', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAomt3vUjw5_OtEYxF5V8nKTeIFKaZ6Bb_mvrcrHxic5jLj9l3k_YO_wJmy3-iwcdNwpTo2t5afJPs8PiaheDagAyZw-j_XFCIhixZahN02bRAM2kTsOqo_-5G0VKV7UgriyDiRzRtsTNxWB3lWyQE4wDo4CoUKC8mbV2bFhl1xfzE_WyQNUjTsSUld5ijl4xGqhV0dksbrnyy8Lhkne9GchDMaRXaIVo5iHL_USS6zTr_wYOe22QXWyx_egBDcj39gwwdFUHLbUrQw', imageAlt: 'Finance' },
+  { id: 3, title: 'Marketing', description: 'Marketing strategy and campaign creation.', venue: 'Auditorium', category: 'Commerce', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBMzCFszPEnObGGwpkYAgqUi4ieq6psoe-VAzW9gghBHc-SLeiyRzvllcmgBUzsmRIKCFHldNfNzzc8t9S-Ly1inUqQlW9OOk3BIXPQd21f31BdNrgBsd0Oj8roKOf6v5QDy_nKnpqYup-W_RaCcszhGJDWCh_azQaCU65zz9IkEuHeXW8xeHlj9IlT2gkqE1IuOjQU4ksgqj22L-7InjH-5v54syFTaMIOEMt7gkJJRVSMPTQBEfs8sLJ8itMJElXthjrDKM_4kNFh', imageAlt: 'Marketing' },
+  { id: 4, title: 'Human Resource', description: 'HR challenges and role plays.', venue: 'HR Room', category: 'Commerce', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDm3R-_pcS85tICJR-BxsxMAq4f8bYcRxYi9IM54JJ3ZoMZOE94ZALhcL85X3-AgF-UIzH6bEKza9TOZTdbsMDFhoofY0B3pAMOQmESQZtxlIbfHplSFIUQ6l4eJZwxAF_UapM7P1veq2VQMGGYwr2A--xVmQoyIOQp_ELlsmT-T1mEeEfiYLJUnIRax1yc29ezNFo58-qXyUPWkgtDWMeYltXfAM9BRwfjyfQqJxJnma11mxby-AD7xSYocTRQoUNv2vGgMWq41G5Q', imageAlt: 'Human Resource' },
+  { id: 5, title: 'Event Management', description: 'Plan and execute a mock event.', venue: 'Event Grounds', category: 'Commerce', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAv-UzRPvgrZLlVpWkv2mWwQQzVlZbHCQoWv5PC51Te6XHHDosmvp-ucUrytmon3pFE05AaZQD4AcSoVDC5we1K4R138opMym2ygIK4MhUIT11wBkdyevA6A_VnA7g_MCqj1IXo7KzLwUxlpKKDIv1_X7vlevct3b0sUKOVUM-GLX7qq5stTrhb4FiBcxGDNcZzltIupfeJTeF4BWdWsk_8HUIHcifPdVrjzncaBohB9nsAL0Q6qbWxEq143ZRq77eRULmDWLTJ29NB', imageAlt: 'Event Management' },
+
+  // IT & Technical (5)
+  { id: 6, title: 'Coding Challenge', description: 'Problem-solving contest.', venue: 'Computer Lab', category: 'IT', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDEYHZX0m9wA1uLU8FZHcjgCfIdZE8lyM3OBCJjXBkzPJs6anDBxpJmQwFGlCGDuGZvZ15NDKaAdqHsgcP59cg0dil6rDtlXGJzJiE7XOYu0yY6S1oT0TkrXuPyyYTiRf8rUsOVQIO6SIIQb4KGWaAxCFyY_JCpx0ht17J8BECzPzQv1nGh57vTgvoPmtqR9a9xrIFFAWFoGezI-LFOsxOnSbEtNmr1q6CEVdbWlvUPSgXq9vDqb6iddFb2nawcIfYEDYZfwfd5eg5u=s2400', imageAlt: 'Coding Challenge' },
+  { id: 7, title: 'E-Sports', description: 'Competitive gaming tournament.', venue: 'Gaming Arena', category: 'IT', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAomt3vUjw5_OtEYxF5V8nKTeIFKaZ6Bb_mvrcrHxic5jLj9l3k_YO_wJmy3-iwcdNwpTo2t5afJPs8PiaheDagAyZw-j_XFCIhixZahN02bRAM2kTsOqo_-5G0VKV7UgriyDiRzRtsTNxWB3lWyQE4wDo4CoUKC8mbV2bFhl1xfzE_WyQNUjTsSUld5ijl4xGqhV0dksbrnyy8Lhkne9GchDMaRXaIVo5iHL_USS6zTr_wYOe22QXWyx_egBDcj39gwwdFUHLbUrQw', imageAlt: 'E-Sports' },
+  { id: 8, title: 'IT Treasure Hunt', description: 'Tech-themed treasure hunt.', venue: 'Campus', category: 'IT', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBMzCFszPEnObGGwpkYAgqUi4ieq6psoe-VAzW9gghBHc-SLeiyRzvllcmgBUzsmRIKCFHldNfNzzc8t9S-Ly1inUqQlW9OOk3BIXPQd21f31BdNrgBsd0Oj8roKOf6v5QDy_nKnpqYup-W_RaCcszhGJDWCh_azQaCU65zz9IkEuHeXW8xeHlj9IlT2gkqE1IuOjQU4ksgqj22L-7InjH-5v54syFTaMIOEMt7gkJJRVSMPTQBEfs8sLJ8itMJElXthjrDKM_4kNFh', imageAlt: 'IT Treasure Hunt' },
+  { id: 9, title: 'Maths Heptathlon', description: 'Seven mathematical challenges.', venue: 'Maths Hall', category: 'IT', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAv-UzRPvgrZLlVpWkv2mWwQQzVlZbHCQoWv5PC51Te6XHHDosmvp-ucUrytmon3pFE05AaZQD4AcSoVDC5we1K4R138opMym2ygIK4MhUIT11wBkdyevA6A_VnA7g_MCqj1IXo7KzLwUxlpKKDIv1_X7vlevct3b0sUKOVUM-GLX7qq5stTrhb4FiBcxGDNcZzltIupfeJTeF4BWdWsk_8HUIHcifPdVrjzncaBohB9nsAL0Q6qbWxEq143ZRq77eRULmDWLTJ29NB', imageAlt: 'Maths Heptathlon' },
+  { id: 10, title: 'Hackathon', description: 'Build solutions in a sprint.', venue: 'Hack Lab', category: 'IT', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlpOL5H-EQtdnU7JAFVgncgGwi3xC1sq8yQC-5CfNPwUBUmV-4hiOYEQfTFkZOp-0y3IXI-rDVWYR_x7Q_KuGBdhWbDGjFCOn16bdT0_d36sovYliF19nc1wnLGwODR4HbEbn51sLP-6OloWwF4rHQj4qu__Z-jYy7lu5nGBKCEwAADPSyhvEo_Y8WKzzVCD_ZwIcBJnZdFOw5ajRFU3pEdjNPtlW_FS3f1p4ycXS5xP7HWM2c10EQY5qdxLGdvEElHnXH_PrHsDRc', imageAlt: 'Hackathon' },
+
+  // Variety (5)
+  { id: 11, title: 'Variety Event', description: 'Open cultural performances.', venue: 'Stage', category: 'Variety', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAv-UzRPvgrZLlVpWkv2mWwQQzVlZbHCQoWv5PC51Te6XHHDosmvp-ucUrytmon3pFE05AaZQD4AcSoVDC5we1K4R138opMym2ygIK4MhUIT11wBkdyevA6A_VnA7g_MCqj1IXo7KzLwUxlpKKDIv1_X7vlevct3b0sUKOVUM-GLX7qq5stTrhb4FiBcxGDNcZzltIupfeJTeF4BWdWsk_8HUIHcifPdVrjzncaBohB9nsAL0Q6qbWxEq143ZRq77eRULmDWLTJ29NB', imageAlt: 'Variety Event' },
+  { id: 12, title: 'Mock Press', description: 'Press and media event simulation.', venue: 'Media Room', category: 'Variety', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDm3R-_pcS85tICJR-BxsxMAq4f8bYcRxYi9IM54JJ3ZoMZOE94ZALhcL85X3-AgF-UIzH6bEKza9TOZTdbsMDFhoofY0B3pAMOQmESQZtxlIbfHplSFIUQ6l4eJZwxAF_UapM7P1veq2VQMGGYwr2A--xVmQoyIOQp_ELlsmT-T1mEeEfiYLJUnIRax1yc29ezNFo58-qXyUPWkgtDWMeYltXfAM9BRwfjyfQqJxJnma11mxby-AD7xSYocTRQoUNv2vGgMWq41G5Q', imageAlt: 'Mock Press' },
+  { id: 13, title: 'Best out of Waste', description: 'Creative reuse competition.', venue: 'Workshop', category: 'Variety', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBMzCFszPEnObGGwpkYAgqUi4ieq6psoe-VAzW9gghBHc-SLeiyRzvllcmgBUzsmRIKCFHldNfNzzc8t9S-Ly1inUqQlW9OOk3BIXPQd21f31BdNrgBsd0Oj8roKOf6v5QDy_nKnpqYup-W_RaCcszhGJDWCh_azQaCU65zz9IkEuHeXW8xeHlj9IlT2gkqE1IuOjQU4ksgqj22L-7InjH-5v54syFTaMIOEMt7gkJJRVSMPTQBEfs8sLJ8itMJElXthjrDKM_4kNFh', imageAlt: 'Best out of Waste' },
+  { id: 14, title: 'Reel Making', description: 'Short-form video challenge.', venue: 'Studio', category: 'Variety', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAomt3vUjw5_OtEYxF5V8nKTeIFKaZ6Bb_mvrcrHxic5jLj9l3k_YO_wJmy3-iwcdNwpTo2t5afJPs8PiaheDagAyZw-j_XFCIhixZahN02bRAM2kTsOqo_-5G0VKV7UgriyDiRzRtsTNxWB3lWyQE4wDo4CoUKC8mbV2bFhl1xfzE_WyQNUjTsSUld5ijl4xGqhV0dksbrnyy8Lhkne9GchDMaRXaIVo5iHL_USS6zTr_wYOe22QXWyx_egBDcj39gwwdFUHLbUrQw', imageAlt: 'Reel Making' },
+  { id: 15, title: 'Face Painting', description: 'Art and creativity on canvas — your face.', venue: 'Art Zone', category: 'Variety', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBMzCFszPEnObGGwpkYAgqUi4ieq6psoe-VAzW9gghBHc-SLeiyRzvllcmgBUzsmRIKCFHldNfNzzc8t9S-Ly1inUqQlW9OOk3BIXPQd21f31BdNrgBsd0Oj8roKOf6v5QDy_nKnpqYup-W_RaCcszhGJDWCh_azQaCU65zz9IkEuHeXW8xeHlj9IlT2gkqE1IuOjQU4ksgqj22L-7InjH-5v54syFTaMIOEMt7gkJJRVSMPTQBEfs8sLJ8itMJElXthjrDKM_4kNFh', imageAlt: 'Face Painting' }
 ];
 
 const categories = [
   { id: 'all', icon: 'all_inclusive', label: 'All Trials' },
-  { id: 'coding', icon: 'terminal', label: 'Coding Runes' },
-  { id: 'robotics', icon: 'precision_manufacturing', label: 'Robotic Forging' },
-  { id: 'gaming', icon: 'sports_esports', label: 'Gaming Valhalla' },
-  { id: 'cybersecurity', icon: 'security', label: "Loki's Logic" }
+  { id: 'Commerce', icon: 'store', label: 'Commerce & Management' },
+  { id: 'it', icon: 'memory', label: 'IT & Technical' },
+  { id: 'variety', icon: 'theaters', label: 'Variety Events' }
 ];
 
 const EventsArena: React.FC = () => {
@@ -108,9 +66,15 @@ const EventsArena: React.FC = () => {
     setTimeout(() => setSelectedEvent(null), 300);
   };
 
-  const filteredEvents = activeCategory === 'all' 
-    ? eventsData 
-    : eventsData.filter(event => event.category.toLowerCase() === activeCategory);
+  const filteredEvents = activeCategory === 'all'
+    ? eventsData
+    : eventsData.filter(event => {
+        const cat = event.category.toLowerCase();
+  if (activeCategory === 'Commerce') return cat === 'Commerce';
+        if (activeCategory === 'it') return cat === 'it';
+        if (activeCategory === 'variety') return cat === 'variety';
+        return event.category.toLowerCase() === activeCategory;
+      });
 
   return (
     <div className="events-arena-page">
@@ -193,20 +157,25 @@ const EventsArena: React.FC = () => {
                 <p className="arena-card-description">{event.description}</p>
                 <div className="arena-card-details">
                   <div className="arena-card-detail">
-                    <span className="material-symbols-outlined">payments</span>
-                    <span>Prize: {event.prize}</span>
-                  </div>
-                  <div className="arena-card-detail">
-                    <span className="material-symbols-outlined">location_on</span>
-                    <span>Venue: {event.venue}</span>
+                    <span className="material-symbols-outlined">groups</span>
+                    <span>
+                      {(() => {
+                        const d = eventDetails.find(ed => ed.id === event.id);
+                        if (!d || !d.heads || d.heads.length === 0) return 'Heads: TBA';
+                        return `Heads: ${d.heads.join(' & ')}`;
+                      })()
+                      }
+                    </span>
                   </div>
                 </div>
               </div>
               <button 
                 className="arena-card-btn"
                 onClick={() => handleViewScroll(event.id)}
+                disabled={event.id === 10}
+                title={event.id === 10 ? 'Registration disabled — Hackathon page coming soon' : 'View details'}
               >
-                <span>View Scroll</span>
+                <span>{event.id === 10 ? 'Register (Disabled)' : 'View Scroll'}</span>
                 <span className="material-symbols-outlined">auto_stories</span>
               </button>
             </div>
@@ -232,7 +201,7 @@ const EventsArena: React.FC = () => {
               </div>
             </div>
           </div>
-          <p className="arena-footer-text">Ragnarok © 2024 • Powered by the Forge of Asgard</p>
+          <p className="arena-footer-text">Ragnarok © 2064 • Powered by the Forge of Asgard</p>
         </footer>
       </main>
 

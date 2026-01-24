@@ -13,7 +13,6 @@ interface EventDetail {
   description: string;
   quote: string;
   icon: string;
-  prize: string;
   rules: string[];
   phases: EventPhase[];
   registrationDeadline?: string;
@@ -458,13 +457,7 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                 </div>
               </div>
 
-              {/* Prize Badge */}
-              <div className="scroll-prize-wrapper">
-                <div className="scroll-prize-badge">
-                  <span className="material-symbols-outlined">military_tech</span>
-                  <span>Prize Pool: {event.prize}</span>
-                </div>
-              </div>
+              {/* Prize Badge removed per data model change */}
             </div>
             ) : (
               /* Registration Form */
