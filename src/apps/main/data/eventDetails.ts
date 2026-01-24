@@ -12,7 +12,6 @@ export interface EventDetail {
   description: string;
   quote: string;
   icon: string;
-  prize: string;
   heads?: string[];
   rules: string[];
   phases: EventPhase[];
@@ -27,7 +26,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Inter-college management challenge.',
     quote: 'Prove your leadership, strategy and people skills in this management simulation.',
     icon: 'grade',
-    prize: '',
     heads: ['Vishak', 'Santhosh'],
     rules: ['Teams of 2', 'Round-based case studies and live presentations'],
     phases: [
@@ -41,7 +39,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Finance case challenge and trading simulations.',
     quote: 'Show your financial acumen and trading instincts.',
     icon: 'attach_money',
-    prize: '',
     heads: ['Prarthana', 'Bharath'],
     rules: ['Teams of 2', 'No external assistance during live rounds'],
     phases: [{ number: 'I', title: 'Simulation', description: 'Live trading rounds' }]
@@ -52,7 +49,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Marketing strategy and campaign creation.',
     quote: 'Craft campaigns that move people and markets.',
     icon: 'campaign',
-    prize: '',
     heads: ['Prapthi', 'Ayshal'],
     rules: ['Teams of 2', 'Creative campaign deliverables required'],
     phases: [{ number: 'I', title: 'Campaign Brief', description: 'Deliverables and presentation' }]
@@ -63,7 +59,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Human Resources challenge & role plays.',
     quote: 'Test your people skills and organisational judgment.',
     icon: 'group',
-    prize: '',
     heads: ['Pavani', 'Sudeeksha'],
     rules: ['Teams of 2', 'Role-play and case study rounds'],
     phases: [{ number: 'I', title: 'Role Play', description: 'Live HR scenarios' }]
@@ -74,7 +69,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Plan and execute a mock event.',
     quote: 'Showcase logistics, creativity and management skills.',
     icon: 'event',
-    prize: '',
     heads: ['Rishika', 'Viola'],
     rules: ['Teams of 2-4', 'Presentation of event plan and budget'],
     phases: [{ number: 'I', title: 'Plan', description: 'Submit event plan' }, { number: 'II', title: 'Execute', description: 'On-site mock execution' }]
@@ -87,7 +81,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Problem-solving contest.',
     quote: 'Speed, accuracy and algorithmic thinking win the day.',
     icon: 'code',
-    prize: '',
     heads: ['Leesha', 'Lavisha'],
     rules: ['Teams of 2', 'Online preliminary followed by on-site finals'],
     phases: [{ number: 'I', title: 'Online Quals', description: 'Algorithmic problem set' }, { number: 'II', title: 'Finals', description: 'On-site coding showdown' }]
@@ -98,7 +91,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Competitive gaming tournament.',
     quote: 'Bring your best team and reflexes to the arena.',
     icon: 'sports_esports',
-    prize: '',
     heads: ['Vikas', 'Adithya Shenoy'],
     rules: ['Check game-specific team sizes', 'Fair-play required'],
     phases: [{ number: 'I', title: 'Online Quals', description: 'Determine top teams' }, { number: 'II', title: 'On-site Bracket', description: 'Elimination rounds' }]
@@ -109,7 +101,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Tech-themed treasure hunt.',
     quote: 'Solve riddles, decode clues and race to the treasure.',
     icon: 'search',
-    prize: '',
     heads: ['Sudeeksha', 'Manisha'],
     rules: ['Teams of 2-4', 'Follow event marshals and safety rules'],
     phases: [{ number: 'I', title: 'Hunt', description: 'Timed treasure hunt across campus' }]
@@ -120,7 +111,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Seven mathematical challenges.',
     quote: 'From logic puzzles to number theory — endurance matters.',
     icon: 'calculate',
-    prize: '',
     heads: ['Clanita', 'Shruthi'],
     rules: ['Teams of 2', 'Multiple timed rounds'],
     phases: [{ number: 'I', title: 'Seven Rounds', description: 'Each round focuses on a different math domain' }]
@@ -131,7 +121,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Build solutions in a sprint.',
     quote: 'Create, prototype and present — build what matters.',
     icon: 'developer_mode',
-    prize: '50000 prize pool',
     heads: ['Royston', 'Prarthana'],
     rules: ['Teams of up to 4', '24-48 hour build window depending on track'],
     phases: [{ number: 'I', title: 'Sprint', description: 'Hack for the allotted time' }, { number: 'II', title: 'Demo', description: 'Pitch to judges' }]
@@ -144,7 +133,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Open cultural performances.',
     quote: 'Bring any act that entertains and inspires.',
     icon: 'theaters',
-    prize: '',
     heads: ['Afreed', 'Shanola'],
     rules: ['Solo or groups allowed', 'Time limits apply'],
     phases: [{ number: 'I', title: 'Auditions', description: 'Select finalists' }, { number: 'II', title: 'Showcase', description: 'Final performances' }]
@@ -155,7 +143,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Press and media event simulation.',
     quote: 'Craft narratives, press releases and handle interviews professionally.',
     icon: 'newspaper',
-    prize: '',
     heads: ['Trisha', 'Pranamya'],
     rules: ['Teams of 2', 'Submission of press materials required'],
     phases: [{ number: 'I', title: 'Brief', description: 'Create press material and handle live Q&A' }]
@@ -166,7 +153,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Creative reuse competition.',
     quote: 'Turn trash into treasure with creativity and sustainability.',
     icon: 'recycling',
-    prize: '',
     heads: ['Riya', 'Shreya'],
     rules: ['Teams of up to 3', 'Materials should be largely recycled'],
     phases: [{ number: 'I', title: 'Create', description: 'On-site build and presentation' }]
@@ -177,7 +163,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Short-form video challenge.',
     quote: 'Tell a story in 30–60 seconds.',
     icon: 'movie',
-    prize: '',
     heads: ['Manish', 'Dhanush'],
     rules: ['Solo or duo', 'Original content only'],
     phases: [{ number: 'I', title: 'Submission', description: 'Upload your reel' }, { number: 'II', title: 'Screening', description: 'Final judging' }]
@@ -188,7 +173,6 @@ export const eventDetails: EventDetail[] = [
     description: 'Art and creativity on canvas — your face.',
     quote: 'Colors, patterns and imagination.',
     icon: 'brush',
-    prize: '',
     heads: ['Akshay N', 'Prajna'],
     rules: ['Solo artists', 'Hygiene and safety rules apply'],
     phases: [{ number: 'I', title: 'Live Paint', description: 'Timed face-painting round' }]
