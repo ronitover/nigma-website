@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply m-0 p-0 font-display;
+    height: 100%;
+  }
+
+  #root {
+    min-height: 100%;
+  }
+}
+
+@layer utilities {
+  .meander-pattern {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuB1tGTR8sbboS9ZGcJU6iaZN8_b_1efaWydHk0vaDfMKFSdF3sMZNiuj2xkZ880qhg75e1PvtJHf7mnsgu90cpwBEzm5buZCf9cIPH6BU4EEe945rcNje31WRVaVTqUK2u56VuJCBXd8NllQUksZCcQnDS5T3VNtIc9WL9tM02uEV8Js4kqBcQU6bYnMDKaPKC0ziokUTI9JdLBc9GdkF0L5Xfd_Z8xkh09KREWNxs3Ew1WQm_h5kx5ooYpudMBxNyxLqkWyedpMaxf);
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(rgba(24, 22, 17, 0.8) 0%, rgba(24, 22, 17, 0.4) 50%, rgba(24, 22, 17, 0.9) 100%);
+  }
+
+  .stone-texture {
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stone-texture::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDFvgrrRcpNO_6hA3ziEdhZ1d-rMhvek4Em-fDcTcj1qqdplt7CyABO9iXQQspG6IC9VYGOpDCYQZhSMl2jNx6ooXQw5eLfD7zpqQ5bubcYdBq7OkGRBkKh0qJCi-FDeZB8IqNyCqgLATUzdaotJpau0QkAfZkjhsOiHYqGJadM7w6cwwrZrbk4zNC_op3Tfl4a8qtYCKQNUfywVMr9gNohKfaWGxb-tYFuPcsSGol1X-fTd6o7Grp7ubkYjdceJpyoeL7ChWwol1oy);
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .glow-effect:hover {
+    box-shadow: 0 0 20px rgba(244, 175, 37, 0.3);
+    border-color: #f4af25;
+  }
+
+  .bronze-gradient {
+    background: linear-gradient(145deg, #2c2518 0%, #181611 100%);
+  }
+
+  .greek-key-border {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAnyfJ0-OuARqcMSmWSVC8h5DPiu0E8haJp-tDWznousZcjnCnjRmsNsgMGATSSTvopKQLK5pLUMbPBWdWh367Wee6uDB2Gz28lrgSbOhf4BdiTFpiRU31aGc0xi4qq2pPCIhZJ2csCpKtdl8hxUdKoo2aCFOnBDsh1nwnXJjpZ0s8oKibZSP2RbLvZuOUsFOD1-82K2SeA2_Zrxfs2o4FaeQSOCIGO3cQuKK5_z473HV8nviDaxYqIBD6MLouP8OfplfiwLkI_BL5u);
+  }
+
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 1.5rem;
+  }
+
+  .marquee-content {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+    min-width: 100%;
+    animation: scroll 40s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .coin-shadow {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(244, 175, 37, 0.3);
+  }
+
+  .marble-bg {
+    background-image: linear-gradient(rgba(24, 22, 17, 0.92), rgba(24, 22, 17, 0.92)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuA8n56ZC0FBZOLRQucS1fgqd5Yn8nPpN_CT9qpgGzh7opsXVXg-IaIw9YttgG1IvNaMbmjQD-j-SoLw-3w5Nzrc1KRGYgjVp1GcQB_osCAK0ddPAMu_AorFwzD8izSyoHFKxmccUzK9Jrmk-bm16-2d20hFnBFvHpkbyf4Qqhjr8gcLn-hqsq1s3aqiJqBg-9W-eF6xXkU55SkYN9EwU6apWmei4A8ejWW5IVrkjv7IqEG1YH93djYiBoV_jCZ9ch_08tDInVgRVD-T);
+  }
+}

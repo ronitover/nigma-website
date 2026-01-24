@@ -1,0 +1,21 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import EventsArena from './pages/EventsArena';
+import CursorTrail from '../../shared/components/CursorTrail';
+
+const MainApp: React.FC = () => {
+  return (
+    <Router>
+      <div className="bg-background-light dark:bg-background-dark font-display text-white transition-colors duration-300">
+        <CursorTrail />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/events" element={<EventsArena />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default MainApp;

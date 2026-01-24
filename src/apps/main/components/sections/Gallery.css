@@ -1,0 +1,21 @@
+/* Gallery-specific styles */
+/* The marquee animation classes are defined globally in index.css */
+
+/* Film Frame Animation */
+.film-frame {
+  animation: filmFrameAppear 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes filmFrameAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sepia filter for old film effect */
+.sepia {
+  filter: sepia(0.3) contrast(1.1);
+}

@@ -1,0 +1,61 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Hero.css';
+
+const Hero: React.FC = () => {
+  const navigate = useNavigate();
+
+  return (
+    <section className="relative w-full">
+      <div className="relative flex min-h-[85vh] w-full flex-col items-center justify-center px-4 py-20 text-center overflow-hidden">
+        {/* Cinematic Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 hero-gradient"></div>
+          <img
+            className="h-full w-full object-cover opacity-40 grayscale"
+            alt="Dramatic storm clouds over a marble greek temple ruins"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEYHZX0m9wA1uLU8FZHcjgCfIdZE8lyM3OBCJjXBkzPJs6anDBxpJmQwFGlCGDuGZvZ15NDKaAdqHsgcP59cg0dil6rDtlXGJzJiE7XOYu0yY6S1oT0TkrXuPyyYTiRf8rUsOVQIO6SIIQb4KGWaAxCFyY_JCpx0ht17J8BECzPzQv1nGh57vTgvoPmtqR9a9xrIFFAWFoGezI-LFOsxOnSbEtNmr1q6CEVdbWlvUPSgXq9vDqb6iddFb2nawcIfYEDYZfwfd5eg5u"
+          />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 flex max-w-[960px] flex-col items-center gap-8">
+          <div className="flex flex-col gap-4">
+            <div className="flex justify-center mb-2">
+              <span className="material-symbols-outlined text-primary text-6xl drop-shadow-[0_0_15px_rgba(244,175,37,0.8)]">
+                bolt
+              </span>
+            </div>
+            <h1 className="text-white text-5xl font-black leading-tight tracking-[-0.033em] md:text-7xl uppercase">
+              RAGNAROK
+              <span className="block text-primary text-3xl md:text-5xl mt-2 tracking-widest font-light">
+                The Ultimate Tech Odyssey
+              </span>
+            </h1>
+            <p className="mx-auto max-w-[720px] text-[#bab09c] text-lg font-normal leading-relaxed md:text-xl">
+              Where the divinity of ancient Olympus meets the innovation of the digital age. Join
+              the battle of wits, code, and legendary creativity.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-primary text-background-dark text-lg font-black uppercase tracking-wider transition-all hover:shadow-[0_0_20px_rgba(244,175,37,0.5)]">
+              <span className="truncate">Download Brochure</span>
+            </button>
+            <button 
+              onClick={() => navigate('/events')}
+              className="flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-transparent border-2 border-primary text-primary text-lg font-black uppercase tracking-wider hover:bg-primary/10"
+            >
+              <span className="truncate">Explore Events</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Meander Decoration */}
+        <div className="absolute bottom-0 left-0 w-full h-4 meander-pattern opacity-50"></div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

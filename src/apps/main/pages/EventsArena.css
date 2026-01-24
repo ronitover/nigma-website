@@ -1,0 +1,502 @@
+/* Events Arena Page Styles */
+
+.events-arena-page {
+  min-height: 100vh;
+  background-color: #181611;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Background */
+.bifrost-bg {
+  background: radial-gradient(circle at top, rgba(244, 175, 37, 0.15) 0%, transparent 50%),
+              linear-gradient(180deg, #181611 0%, #0d0c09 100%);
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Header / Nav */
+.arena-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  background: rgba(24, 22, 17, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 1.5rem;
+}
+
+.arena-header-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+}
+
+.arena-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.arena-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.arena-logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #f4af25;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #181611;
+}
+
+.arena-logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: #f4af25;
+  text-shadow: 0 0 8px rgba(244, 175, 37, 0.6);
+  margin: 0;
+}
+
+.arena-nav-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .arena-nav-links {
+    display: flex;
+  }
+}
+
+.arena-nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.arena-nav-link:hover {
+  color: #f4af25;
+}
+
+.arena-nav-link-active {
+  color: #f4af25;
+  font-weight: 700;
+}
+
+.arena-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.arena-search {
+  display: none;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  width: 16rem;
+}
+
+@media (min-width: 1024px) {
+  .arena-search {
+    display: flex;
+  }
+}
+
+.arena-search .material-symbols-outlined {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.875rem;
+}
+
+.arena-search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  width: 100%;
+  color: white;
+  margin-left: 0.5rem;
+}
+
+.arena-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.arena-register-btn {
+  background-color: #f4af25;
+  color: #181611;
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 15px rgba(244, 175, 37, 0.3);
+}
+
+.arena-register-btn:hover {
+  transform: scale(1.05);
+}
+
+.arena-register-btn:active {
+  transform: scale(0.95);
+}
+
+/* Main Content */
+.arena-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* Hero Section */
+.arena-hero {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.arena-glow-effect {
+  position: absolute;
+  top: -5rem;
+  left: -5rem;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(244, 175, 37, 0.1);
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.arena-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+@media (min-width: 1024px) {
+  .arena-title {
+    font-size: 4.5rem;
+  }
+}
+
+.arena-title-highlight {
+  color: #f4af25;
+  font-style: italic;
+}
+
+.arena-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 48rem;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Category Tabs */
+.arena-categories {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.arena-category-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.arena-category-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.arena-category-btn-active {
+  border-color: #f4af25;
+  background: rgba(244, 175, 37, 0.1);
+  color: #f4af25;
+}
+
+.arena-category-btn .material-symbols-outlined {
+  transition: transform 0.3s;
+}
+
+.arena-category-btn-active .material-symbols-outlined {
+  transform: scale(1.1);
+}
+
+.arena-category-btn span:last-child {
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+/* Events Grid */
+.arena-events-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .arena-events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .arena-events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Event Card */
+.arena-event-card {
+  background: linear-gradient(145deg, #24211a, #12110d);
+  box-shadow: 10px 10px 20px #0a0907, -5px -5px 15px rgba(244, 175, 37, 0.05);
+  border: 1px solid rgba(244, 175, 37, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.arena-event-card:hover {
+  border-color: #f4af25;
+  box-shadow: 0 0 25px rgba(244, 175, 37, 0.2);
+  transform: translateY(-5px);
+}
+
+.arena-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.arena-card-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s;
+}
+
+.arena-event-card:hover .arena-card-image {
+  transform: scale(1.1);
+}
+
+.arena-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #181611, transparent);
+  opacity: 0.6;
+}
+
+.arena-card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(244, 175, 37, 0.2);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(244, 175, 37, 0.3);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #f4af25;
+}
+
+.arena-card-content {
+  flex-grow: 1;
+}
+
+.arena-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.arena-event-card:hover .arena-card-title {
+  color: #f4af25;
+}
+
+.arena-card-description {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.arena-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.arena-card-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.arena-card-detail .material-symbols-outlined {
+  color: #f4af25;
+  font-size: 1.125rem;
+}
+
+.arena-card-detail span:last-child {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.arena-card-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(145deg, #24211a, #12110d);
+  border: 1px solid rgba(244, 175, 37, 0.4);
+  border-radius: 0.75rem;
+  color: #f4af25;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.arena-card-btn:hover {
+  background: #f4af25;
+  color: #181611;
+}
+
+/* Footer */
+.arena-footer {
+  margin-top: 8rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.arena-footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .arena-footer-content {
+    flex-direction: row;
+  }
+}
+
+.arena-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.arena-footer-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.arena-footer-links a:hover {
+  color: #f4af25;
+}
+
+.arena-footer-divider {
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.arena-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.arena-social-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.arena-social-icon:hover {
+  background: rgba(244, 175, 37, 0.2);
+}
+
+.arena-social-icon .material-symbols-outlined {
+  font-size: 0.875rem;
+}
+
+.arena-footer-text {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  padding-bottom: 3rem;
+  margin: 0;
+}
