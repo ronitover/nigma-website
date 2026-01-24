@@ -33,6 +33,7 @@ interface Star {
   twinkleSpeed: number;
   vx: number;
   vy: number;
+  color: 'blue' | 'gold';
 }
 
 interface Connection {
@@ -42,11 +43,40 @@ interface Connection {
 }
 
 const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onClose }) => {
+  const [showRegistration, setShowRegistration] = React.useState(false);
+  const [showSuccess, setShowSuccess] = React.useState(false);
+  const [isFlipping, setIsFlipping] = React.useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const starsRef = useRef<Star[]>([]);
   const connectionsRef = useRef<Connection[]>([]);
   const animationFrame = useRef<number | undefined>(undefined);
   const time = useRef(0);
+
+  const handleRegisterClick = () => {
+    setIsFlipping(true);
+    setTimeout(() => {
+      setShowRegistration(true);
+      setIsFlipping(false);
+    }, 300);
+  };
+
+  const handleBackToDetails = () => {
+    setIsFlipping(true);
+    setTimeout(() => {
+      setShowRegistration(false);
+      setIsFlipping(false);
+    }, 300);
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsFlipping(true);
+    setTimeout(() => {
+      setShowRegistration(false);
+      setShowSuccess(true);
+      setIsFlipping(false);
+    }, 300);
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -66,6 +96,10 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
       };
     } else {
       document.body.style.overflow = 'unset';
+      // Reset to event details when modal closes
+      setShowRegistration(false);
+      setShowSuccess(false);
+      setIsFlipping(false);
     }
 
     return () => {
@@ -90,41 +124,81 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
       initStars();
     };
 
-    // Initialize stars
+    // Initialize stars with constellation patterns (matching main ConstellationBackground)
     const initStars = () => {
       const starCount = Math.floor((canvas.width * canvas.height) / 8000);
       starsRef.current = [];
 
-      for (let i = 0; i < starCount; i++) {
+      // Create constellation clusters
+      const clusterCount = Math.floor(starCount / 6);
+      
+      for (let cluster = 0; cluster < clusterCount; cluster++) {
+        // Random cluster center
+        const centerX = Math.random() * canvas.width;
+        const centerY = Math.random() * canvas.height;
+        const clusterRadius = 100 + Math.random() * 100;
+        const starsInCluster = 5 + Math.floor(Math.random() * 3);
+        
+        // Determine cluster color (alternating blue and gold clusters)
+        const clusterColor: 'blue' | 'gold' = cluster % 2 === 0 ? 'blue' : 'gold';
+
+        for (let i = 0; i < starsInCluster; i++) {
+          const angle = (i / starsInCluster) * Math.PI * 2;
+          const distance = Math.random() * clusterRadius;
+          
+          starsRef.current.push({
+            x: centerX + Math.cos(angle) * distance,
+            y: centerY + Math.sin(angle) * distance,
+            size: Math.random() * 2 + 0.8,
+            opacity: Math.random() * 0.4 + 0.4,
+            twinkleSpeed: Math.random() * 0.02 + 0.01,
+            vx: (Math.random() - 0.5) * 0.08,
+            vy: (Math.random() - 0.5) * 0.08,
+            color: clusterColor,
+          });
+        }
+      }
+
+      // Add some scattered random stars
+      const randomStars = Math.floor(starCount * 0.3);
+      for (let i = 0; i < randomStars; i++) {
         starsRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2 + 0.5,
-          opacity: Math.random() * 0.5 + 0.3,
+          size: Math.random() * 1.5 + 0.5,
+          opacity: Math.random() * 0.3 + 0.2,
           twinkleSpeed: Math.random() * 0.02 + 0.01,
           vx: (Math.random() - 0.5) * 0.1,
           vy: (Math.random() - 0.5) * 0.1,
+          color: Math.random() > 0.5 ? 'blue' : 'gold',
         });
       }
 
-      // Create connections between nearby stars
+      // Create connections between nearby stars (constellation lines)
       connectionsRef.current = [];
-      const maxDistance = 150;
+      const maxDistance = 120;
 
       for (let i = 0; i < starsRef.current.length; i++) {
+        const star1 = starsRef.current[i];
+        let connectionsForStar = 0;
+        const maxConnectionsPerStar = 3;
+
         for (let j = i + 1; j < starsRef.current.length; j++) {
-          const star1 = starsRef.current[i];
+          if (connectionsForStar >= maxConnectionsPerStar) break;
+          
           const star2 = starsRef.current[j];
           const distance = Math.sqrt(
             Math.pow(star1.x - star2.x, 2) + Math.pow(star1.y - star2.y, 2)
           );
 
-          if (distance < maxDistance && Math.random() > 0.95) {
+          // Connect stars of same color that are close together
+          if (distance < maxDistance && star1.color === star2.color && Math.random() > 0.7) {
             connectionsRef.current.push({
               from: i,
               to: j,
-              opacity: 0.15,
+              opacity: 0.2,
             });
+            connectionsForStar++;
           }
         }
       }
@@ -158,21 +232,19 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
         const twinkle = Math.sin(time.current * star.twinkleSpeed + index) * 0.3 + 0.7;
         const currentOpacity = star.opacity * twinkle;
 
-        // Draw star with blue/gold glow (matching theme)
+        // Draw star with blue or gold glow
         const gradient = ctx.createRadialGradient(
           star.x, star.y, 0,
           star.x, star.y, star.size * 3
         );
         
-        // Alternate between blue and gold stars
-        const isBlue = index % 2 === 0;
-        if (isBlue) {
-          gradient.addColorStop(0, `rgba(96, 165, 250, ${currentOpacity})`);
-          gradient.addColorStop(0.4, `rgba(59, 130, 246, ${currentOpacity * 0.5})`);
+        if (star.color === 'blue') {
+          gradient.addColorStop(0, `rgba(147, 197, 253, ${currentOpacity})`);
+          gradient.addColorStop(0.4, `rgba(59, 130, 246, ${currentOpacity * 0.6})`);
           gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
         } else {
           gradient.addColorStop(0, `rgba(255, 235, 157, ${currentOpacity})`);
-          gradient.addColorStop(0.4, `rgba(244, 175, 37, ${currentOpacity * 0.5})`);
+          gradient.addColorStop(0.4, `rgba(244, 175, 37, ${currentOpacity * 0.6})`);
           gradient.addColorStop(1, 'rgba(244, 175, 37, 0)');
         }
 
@@ -182,7 +254,7 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
         ctx.fill();
 
         // Draw bright center
-        ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity * 0.8})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity * 0.9})`;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size * 0.5, 0, Math.PI * 2);
         ctx.fill();
@@ -200,21 +272,28 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
         );
 
         // Fade lines based on distance
-        const maxDistance = 150;
+        const maxDistance = 120;
         const lineOpacity = connection.opacity * (1 - distance / maxDistance);
 
         if (lineOpacity > 0) {
-          // Create gradient line (blue/gold mix)
+          // Create gradient line based on star colors
           const gradient = ctx.createLinearGradient(
             star1.x, star1.y,
             star2.x, star2.y
           );
-          gradient.addColorStop(0, `rgba(59, 130, 246, ${lineOpacity * star1.opacity * 0.6})`);
-          gradient.addColorStop(0.5, `rgba(255, 215, 97, ${lineOpacity * 0.8})`);
-          gradient.addColorStop(1, `rgba(244, 175, 37, ${lineOpacity * star2.opacity * 0.6})`);
+          
+          if (star1.color === 'blue') {
+            gradient.addColorStop(0, `rgba(59, 130, 246, ${lineOpacity * star1.opacity * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(96, 165, 250, ${lineOpacity * 0.9})`);
+            gradient.addColorStop(1, `rgba(59, 130, 246, ${lineOpacity * star2.opacity * 0.8})`);
+          } else {
+            gradient.addColorStop(0, `rgba(244, 175, 37, ${lineOpacity * star1.opacity * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(255, 215, 97, ${lineOpacity * 0.9})`);
+            gradient.addColorStop(1, `rgba(244, 175, 37, ${lineOpacity * star2.opacity * 0.8})`);
+          }
 
           ctx.strokeStyle = gradient;
-          ctx.lineWidth = 0.5;
+          ctx.lineWidth = 0.8;
           ctx.beginPath();
           ctx.moveTo(star1.x, star1.y);
           ctx.lineTo(star2.x, star2.y);
@@ -261,16 +340,77 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
 
         <div className="modal-content-wrapper">
           {/* Back Button */}
-          <div className="modal-back-btn-wrapper">
-            <button className="modal-back-btn" onClick={onClose}>
-              <span className="material-symbols-outlined">arrow_back</span>
-              <span>Back to Arena</span>
-            </button>
-          </div>
+          {!showSuccess && (
+            <div className="modal-back-btn-wrapper">
+              <button 
+                className="modal-back-btn" 
+                onClick={showRegistration ? handleBackToDetails : onClose}
+              >
+                <span className="material-symbols-outlined">arrow_back</span>
+                <span>{showRegistration ? 'Return to Event Details' : 'Back to Arena'}</span>
+              </button>
+            </div>
+          )}
 
           {/* Golden Scroll */}
-          <div className="golden-scroll">
-            <div className="scroll-content">
+          <div className={`golden-scroll ${isFlipping ? 'scroll-flipping' : ''}`}>
+            {showSuccess ? (
+              /* Success Screen */
+              <div className="scroll-content success-screen">
+                {/* Header */}
+                <div className="success-header">
+                  <h1 className="success-title">
+                    <span className="material-symbols-outlined success-icon">verified</span>
+                    Registration Victorious
+                  </h1>
+                  <p className="success-subtitle">
+                    Your name has been etched in gold into the halls of Valhalla.
+                  </p>
+                </div>
+
+                {/* Confirmation Card */}
+                <div className="success-card">
+                  <div className="success-card-image">
+                    <div className="success-card-overlay"></div>
+                  </div>
+                  <div className="success-card-content">
+                    <p className="success-card-title">The Code of Odin</p>
+                    <div className="success-card-details">
+                      <div className="success-card-info">
+                        <div className="success-info-item">
+                          <span className="material-symbols-outlined">verified</span>
+                          <p>Status: Confirmed</p>
+                        </div>
+                        <div className="success-info-item">
+                          <span className="material-symbols-outlined">military_tech</span>
+                          <p>Warrior ID: RAG-ODIN-2024</p>
+                        </div>
+                      </div>
+                      <button className="success-ticket-btn">
+                        <span>VIEW TICKET</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Return Button */}
+                <div className="success-actions">
+                  <button className="success-return-btn" onClick={onClose}>
+                    <span className="material-symbols-outlined">swords</span>
+                    <span>Return to Arena</span>
+                    <span className="material-symbols-outlined">swords</span>
+                  </button>
+                </div>
+
+                {/* Decorative Icons */}
+                <div className="success-decorations">
+                  <span className="material-symbols-outlined">temple_hindu</span>
+                  <span className="material-symbols-outlined">mountain_flag</span>
+                  <span className="material-symbols-outlined">auto_awesome</span>
+                </div>
+              </div>
+            ) : !showRegistration ? (
+              <div className="scroll-content">
               {/* Header */}
               <div className="scroll-header">
                 <div className="scroll-icon-wrapper">
@@ -326,17 +466,92 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                 </div>
               </div>
             </div>
-          </div>
+            ) : (
+              /* Registration Form */
+              <div className="scroll-content registration-form">
+                {/* Header */}
+                <div className="registration-header">
+                  <div className="registration-icon-wrapper">
+                    <span className="material-symbols-outlined registration-icon">history_edu</span>
+                  </div>
+                  <h1 className="registration-title">Enlist Your Name</h1>
+                  <p className="registration-subtitle">Warrior Registration Form</p>
+                  <div className="registration-divider"></div>
+                </div>
 
-          {/* Action Area */}
-          <div className="modal-actions">
-            <button className="modal-register-btn">
-              Register Now
-            </button>
-            {event.registrationDeadline && (
-              <p className="modal-deadline">Registrations close in {event.registrationDeadline}</p>
+                {/* Form */}
+                <form className="registration-form-fields" onSubmit={handleFormSubmit}>
+                  <div className="form-field">
+                    <label className="form-label">Full Name</label>
+                    <input 
+                      className="form-input" 
+                      placeholder="e.g. Ragnar Lothbrok" 
+                      required 
+                      type="text"
+                    />
+                  </div>
+
+                  <div className="form-field">
+                    <label className="form-label">College</label>
+                    <input 
+                      className="form-input" 
+                      placeholder="Asgard Institute of Technology" 
+                      required 
+                      type="text"
+                    />
+                  </div>
+
+                  <div className="form-row">
+                    <div className="form-field">
+                      <label className="form-label">City, State</label>
+                      <input 
+                        className="form-input" 
+                        placeholder="Midgard, NY" 
+                        required 
+                        type="text"
+                      />
+                    </div>
+                    <div className="form-field">
+                      <label className="form-label">Phone Number</label>
+                      <input 
+                        className="form-input" 
+                        placeholder="+1 (555) VALHALLA" 
+                        required 
+                        type="tel"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-submit-wrapper">
+                    <button className="form-submit-btn" type="submit">
+                      <span className="form-submit-overlay"></span>
+                      <div className="form-submit-content">
+                        <span className="material-symbols-outlined">swords</span>
+                        JOIN THE BATTLE
+                        <span className="material-symbols-outlined">swords</span>
+                      </div>
+                    </button>
+                  </div>
+                </form>
+
+                <div className="registration-disclaimer">
+                  <p>By joining, you agree to the laws of the Arena and the fate of the Norns.</p>
+                </div>
+              </div>
             )}
           </div>
+
+          {/* Action Area - Only show when viewing event details */}
+          {!showRegistration && !showSuccess && (
+            <div className="modal-actions">
+              <button className="modal-register-btn" onClick={handleRegisterClick}>
+                Register Now
+              </button>
+              {event.registrationDeadline && (
+                <p className="modal-deadline">Registrations close in {event.registrationDeadline}</p>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

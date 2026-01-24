@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
+import headerLogo from '../../../assets/images/Header Logo.png';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -29,25 +30,12 @@ const Login: React.FC = () => {
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-8 py-4 sm:py-6">
-        <div className="flex items-center gap-2 sm:gap-3">
-          <div className="text-primary drop-shadow-[0_0_8px_rgba(244,175,37,0.6)]">
-            <svg
-              className="size-6 sm:size-8"
-              fill="none"
-              viewBox="0 0 48 48"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                clipRule="evenodd"
-                d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
-                fill="currentColor"
-                fillRule="evenodd"
-              ></path>
-            </svg>
-          </div>
-          <h2 className="text-xl sm:text-2xl font-majestic font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-white drop-shadow-lg">
-            Ragnarok
-          </h2>
+        <div className="flex items-center">
+          <img 
+            src={headerLogo} 
+            alt="NITTE Logo" 
+            className="h-10 sm:h-12 w-auto object-contain drop-shadow-lg"
+          />
         </div>
         <button className="flex items-center gap-1 sm:gap-2 rounded-full border border-primary/40 bg-black/40 backdrop-blur-md px-3 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-primary transition-all hover:bg-primary hover:text-background-dark hover:border-primary">
           <span className="material-symbols-outlined text-sm sm:text-base">home</span>

@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import EventDetailModal from '../components/EventDetailModal';
 import { eventDetails } from '../data/eventDetails';
 import type { EventDetail } from '../data/eventDetails';
+import ConstellationBackground from '../../../shared/components/ConstellationBackground';
 import './EventsArena.css';
+import headerLogo from '../../../assets/images/Header Logo.png';
 
 interface EventCardData {
   id: number;
@@ -112,7 +114,12 @@ const EventsArena: React.FC = () => {
 
   return (
     <div className="events-arena-page">
-      {/* Background */}
+      {/* Constellation Background - uniform across all pages */}
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
+        <ConstellationBackground />
+      </div>
+      
+      {/* Background overlay */}
       <div className="bifrost-bg"></div>
 
       {/* Header / Nav */}
@@ -120,10 +127,11 @@ const EventsArena: React.FC = () => {
         <div className="arena-header-content">
           <div className="arena-nav-left">
             <div className="arena-logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-              <div className="arena-logo-icon">
-                <span className="material-symbols-outlined">bolt</span>
-              </div>
-              <h1 className="arena-logo-text">Ragnarok</h1>
+              <img 
+                src={headerLogo} 
+                alt="NITTE Logo" 
+                className="h-12 w-auto object-contain"
+              />
             </div>
             <nav className="arena-nav-links">
               <a onClick={() => navigate('/')} className="arena-nav-link">Home</a>
@@ -134,14 +142,6 @@ const EventsArena: React.FC = () => {
             </nav>
           </div>
           <div className="arena-nav-right">
-            <div className="arena-search">
-              <span className="material-symbols-outlined">search</span>
-              <input 
-                type="text" 
-                placeholder="Search the Realm..." 
-                className="arena-search-input"
-              />
-            </div>
             <button className="arena-register-btn">REGISTER</button>
           </div>
         </div>

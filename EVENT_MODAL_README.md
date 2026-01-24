@@ -56,6 +56,27 @@ Each event detail includes:
    - Registration deadline countdown
    - Hover effects with glow
 
+7. **Registration Form** (shown after clicking "Register Now")
+   - Full Name input field
+   - College/Institution field
+   - City, State location field
+   - Phone Number field
+   - "Join the Battle" submit button with dual sword icons
+   - Form disclaimer text
+   - Smooth scroll flip animation transition
+
+8. **Success Confirmation** (shown after form submission)
+   - "Registration Victorious" heading with verified icon
+   - Victory message: "Your name has been etched in gold into the halls of Valhalla"
+   - Confirmation card with:
+     - Epic glowing mythical code terminal image
+     - Event title: "The Code of Odin"
+     - Status: Confirmed (with verified icon)
+     - Warrior ID: RAG-ODIN-2024 (with medal icon)
+     - "VIEW TICKET" button
+   - "Return to Arena" button with dual sword icons
+   - Decorative temple, flag, and star icons at bottom
+
 ## Event Data Structure
 
 Each event includes:
@@ -129,9 +150,19 @@ Modal slides up with smooth animation
     ↓
 View complete event details
     ↓
-Click "Back to Arena" or click outside
+Click "Register Now" button
     ↓
-Modal closes with fade animation
+Scroll flips to show registration form
+    ↓
+Fill in warrior details (Name, College, City, Phone)
+    ↓
+Click "Join the Battle" button
+    ↓
+Scroll flips to show success confirmation
+    ↓
+Click "Return to Arena" or "Back to Arena"
+    ↓
+Returns to Events Arena page
 ```
 
 ## Animations & Interactions
@@ -140,16 +171,28 @@ Modal closes with fade animation
 - **Open**: Fade in (0.3s) + Slide up (0.4s)
 - **Close**: Fade out (0.3s)
 - **Backdrop**: Blur effect with 85% opacity
+- **Scroll Flip**: 3D rotation animation (0.6s) when switching between views
+- **Success Screen**: Fade in + scale up (0.6s) with staggered element animations
 
 ### Torch Animation
-- **Flicker**: 2-second infinite loop
-- **Effects**: Scale transform + opacity changes
-- **Glow**: Double drop-shadow for blue flame effect
+- **Float**: Vertical movement (3s infinite loop)
+- **Flicker**: Flame scale, rotate, and color variations (2s infinite loop)
+- **Pole Pulse**: Opacity pulse effect (3s infinite loop)
+- **Glow**: Animated text-shadow for VALHALLA/RAGNAROK text
 
 ### Button Interactions
 - **View Scroll**: Hover state changes on event cards
-- **Register Now**: Scale up on hover (1.05x), scale down on click (0.98x)
+- **Register Now**: Gold gradient button with shimmer effect on hover
+- **Join the Battle**: Blue gradient with sword icon rotation on hover
+- **Return to Arena**: Gold gradient with expanding ripple effect and sword rotation
 - **Back Button**: Color change to gold on hover
+
+### Success Screen Animations
+- **Header**: Text glow pulse (2s infinite)
+- **Icon**: Scale pulse with drop-shadow (2s infinite)
+- **Card**: Slide up entrance (0.6s with 0.2s delay)
+- **Button**: Slide up entrance (0.6s with 0.4s delay)
+- **Decorations**: Fade in (0.6s with 0.6s delay) + floating movement (3s infinite)
 
 ### Scroll Lock
 - Body scrolling disabled when modal open
@@ -159,10 +202,14 @@ Modal closes with fade animation
 ## Styling Details
 
 ### Color Scheme
-- **Golden Scroll**: Linear gradient (#f3e5ab → #e6be8a → #d4af37)
+- **Golden Scroll**: Linear gradient (#f3e5ab → #e6be8a → #d4af37 → #f4af25)
 - **Deep Gold**: #996515 (for accents and text)
 - **Dark Background**: #0a0a0c (for badge and background)
 - **Scroll Text**: #0a0a0c (high contrast on gold)
+- **Blue Flames**: #3b82f6 (for torches)
+- **Blue Gradient**: #3b82f6 → #2563eb → #1d4ed8 (for submit button)
+- **Gold Gradient**: #f4af25 → #d4af37 → #b8860b (for Register Now button)
+- **Success Card**: rgba(26, 21, 10, 0.9) (dark brown with transparency)
 
 ### Typography
 - **Title**: 2.25rem mobile / 3.75rem desktop
@@ -201,8 +248,19 @@ Test the following scenarios:
 - [ ] Correct event details displayed
 - [ ] All 6 events have complete data
 - [ ] Body scroll is locked when modal open
-- [ ] Click outside modal to close
+- [ ] Click "Register Now" to show form
+- [ ] Scroll flips smoothly (no double animation)
+- [ ] Registration form displays correctly
+- [ ] All form fields are present and styled
+- [ ] Fill form and click "Join the Battle"
+- [ ] Form submits and shows success screen
+- [ ] Success screen displays confirmation
+- [ ] Warrior ID and status shown correctly
+- [ ] Click "Return to Arena" closes modal
+- [ ] Returns to Events Arena page
+- [ ] Click outside modal to close (from any view)
 - [ ] Click "Back to Arena" button to close
+- [ ] ESC key closes modal
 - [ ] Modal closes with smooth animation
 - [ ] Body scroll restored after close
 
@@ -218,8 +276,24 @@ Test the following scenarios:
 ### Animations
 - [ ] Fade in/out is smooth
 - [ ] Slide up animation on open
+- [ ] Constellation background animates smoothly
+- [ ] Stars twinkle and drift
+- [ ] Constellation lines fade based on distance
 - [ ] Torch flames flicker continuously
-- [ ] Register button scales on hover
+- [ ] Torch text glows with pulse effect
+- [ ] Scroll flip animation is smooth (3D rotation)
+- [ ] Only flip animation plays (no unroll)
+- [ ] Success screen fades in and scales up
+- [ ] Success elements animate in sequence (staggered)
+- [ ] Success title glows with pulse
+- [ ] Success icon pulses continuously
+- [ ] Confirmation card slides up
+- [ ] Return button slides up after card
+- [ ] Decorative icons float up and down
+- [ ] Button hover effects work smoothly
+- [ ] Register button shimmer on hover
+- [ ] Join Battle button swords rotate on hover
+- [ ] Return button ripple effect on hover
 - [ ] No janky animations or glitches
 
 ### Content
@@ -253,23 +327,46 @@ EventDetailModal.tsx
 │   ├── event (EventDetail | null)
 │   ├── isOpen (boolean)
 │   └── onClose (function)
+├── State
+│   ├── showRegistration (boolean - toggle form view)
+│   ├── showSuccess (boolean - toggle success view)
+│   └── isFlipping (boolean - trigger flip animation)
 ├── Effects
-│   └── Body scroll lock
+│   ├── Body scroll lock
+│   └── Constellation background animation (Canvas API)
+├── Handlers
+│   ├── handleRegisterClick (show registration form)
+│   ├── handleBackToDetails (return to event details)
+│   └── handleFormSubmit (show success screen)
 └── Render
     ├── Modal Overlay (with click handler)
+    ├── Constellation Canvas Background
     ├── Torches (desktop only)
-    ├── Golden Scroll
-    │   ├── Header
-    │   ├── Quote
-    │   ├── Rules
-    │   ├── Phases
-    │   └── Prize Badge
-    └── Action Buttons
+    ├── Back Button (conditional)
+    ├── Golden Scroll (with flip animation)
+    │   ├── Event Details View (default)
+    │   │   ├── Header
+    │   │   ├── Quote
+    │   │   ├── Rules
+    │   │   ├── Phases
+    │   │   └── Prize Badge
+    │   ├── Registration Form View
+    │   │   ├── Form Header
+    │   │   ├── Input Fields
+    │   │   ├── Submit Button
+    │   │   └── Disclaimer
+    │   └── Success Confirmation View
+    │       ├── Success Header
+    │       ├── Confirmation Card
+    │       ├── Return Button
+    │       └── Decorative Icons
+    └── Action Buttons (conditional)
 ```
 
 ## Future Enhancements
 
-- [ ] Add actual registration form integration
+- [x] ~~Add actual registration form integration~~ ✅ **COMPLETE**
+- [x] ~~Add success confirmation screen~~ ✅ **COMPLETE**
 - [ ] Connect to backend API for real-time data
 - [ ] Add countdown timer for registration deadline
 - [ ] Implement social sharing buttons

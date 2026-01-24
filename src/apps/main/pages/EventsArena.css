@@ -9,20 +9,21 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 
-/* Background */
+/* Background - layered with constellation - reduced opacity for visibility */
 .bifrost-bg {
-  background: radial-gradient(circle at top, rgba(244, 175, 37, 0.15) 0%, transparent 50%),
-              linear-gradient(180deg, #181611 0%, #0d0c09 100%);
+  background: radial-gradient(circle at top, rgba(244, 175, 37, 0.05) 0%, transparent 50%),
+              linear-gradient(180deg, rgba(24, 22, 17, 0.4) 0%, rgba(13, 12, 9, 0.6) 100%);
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* Header / Nav */
 .arena-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
   backdrop-filter: blur(12px);
   background: rgba(24, 22, 17, 0.8);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -34,41 +35,34 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 5rem;
+  justify-content: center;
+  height: 4.5rem;
+  gap: 3rem;
 }
 
 .arena-nav-left {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
 .arena-logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding: 0.5rem 0;
 }
 
-.arena-logo-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: #f4af25;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #181611;
+.arena-logo img {
+  height: 3rem;
+  width: auto;
+  object-fit: contain;
 }
 
-.arena-logo-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  text-transform: uppercase;
-  color: #f4af25;
-  text-shadow: 0 0 8px rgba(244, 175, 37, 0.6);
-  margin: 0;
+@media (max-width: 768px) {
+  .arena-logo img {
+    height: 2.5rem;
+  }
 }
 
 .arena-nav-links {
@@ -80,6 +74,34 @@
 @media (min-width: 768px) {
   .arena-nav-links {
     display: flex;
+  }
+  
+  .arena-header-content {
+    height: 5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .arena-header-content {
+    height: 4rem;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .arena-nav-left {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .arena-header-content {
+    height: 3.5rem;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  
+  .arena-nav-left {
+    gap: 1rem;
   }
 }
 
@@ -106,63 +128,44 @@
 .arena-nav-right {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
 }
 
-.arena-search {
-  display: none;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 9999px;
-  padding: 0.5rem 1rem;
-  width: 16rem;
-}
-
-@media (min-width: 1024px) {
-  .arena-search {
-    display: flex;
-  }
-}
-
-.arena-search .material-symbols-outlined {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.875rem;
-}
-
-.arena-search-input {
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 0.875rem;
-  width: 100%;
-  color: white;
-  margin-left: 0.5rem;
-}
-
-.arena-search-input::placeholder {
-  color: rgba(255, 255, 255, 0.2);
-}
+/* Search removed - no longer used */
 
 .arena-register-btn {
-  background-color: #f4af25;
-  color: #181611;
-  padding: 0.625rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 700;
-  font-size: 0.875rem;
+  background: linear-gradient(135deg, #f4af25 0%, #d4af37 100%);
+  color: #0a0a0c;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
   border: none;
+  font-weight: 800;
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 15px rgba(244, 175, 37, 0.3);
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(244, 175, 37, 0.3);
+  white-space: nowrap;
 }
 
 .arena-register-btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 30px rgba(244, 175, 37, 0.5);
+  filter: brightness(1.1);
 }
 
-.arena-register-btn:active {
-  transform: scale(0.95);
+@media (max-width: 768px) {
+  .arena-register-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .arena-register-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8125rem;
+  }
 }
 
 /* Main Content */
@@ -170,6 +173,8 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
+  position: relative;
+  z-index: 10;
 }
 
 /* Hero Section */

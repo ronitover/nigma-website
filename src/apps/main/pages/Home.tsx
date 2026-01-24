@@ -12,9 +12,8 @@ import InfoMap from '../components/sections/InfoMap';
 import ConstellationBackground from '../../../shared/components/ConstellationBackground';
 
 const Home: React.FC = () => {
-  // Set your target date here for the countdown
-  // Example: new Date('2024-12-31T23:59:59')
-  const eventDate = undefined; // Leave as undefined to show static time, or set a Date
+  // Countdown to February 25, 2026, 11:59:59 PM IST
+  const eventDate = new Date('2026-02-25T23:59:59+05:30');
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
@@ -23,7 +22,18 @@ const Home: React.FC = () => {
         <ConstellationBackground />
       </div>
       
-      {/* All content above constellation */}
+      {/* Cinematic Background - extends from hero through header */}
+      <div className="absolute top-0 left-0 w-full h-[100vh] z-0 overflow-hidden">
+        <div className="absolute inset-0 hero-gradient"></div>
+        <img
+          className="h-full w-full object-cover opacity-40 grayscale"
+          alt="Dramatic storm clouds over ancient marble temple ruins"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEYHZX0m9wA1uLU8FZHcjgCfIdZE8lyM3OBCJjXBkzPJs6anDBxpJmQwFGlCGDuGZvZ15NDKaAdqHsgcP59cg0dil6rDtlXGJzJiE7XOYu0yY6S1oT0TkrXuPyyYTiRf8rUsOVQIO6SIIQb4KGWaAxCFyY_JCpx0ht17J8BECzPzQv1nGh57vTgvoPmtqR9a9xrIFFAWFoGezI-LFOsxOnSbEtNmr1q6CEVdbWlvUPSgXq9vDqb6iddFb2nawcIfYEDYZfwfd5eg5u=s2400"
+          loading="eager"
+        />
+      </div>
+      
+      {/* All content above backgrounds */}
       <div className="relative" style={{ zIndex: 1 }}>
         <Header />
         <main className="flex-1">

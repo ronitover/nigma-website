@@ -8,31 +8,41 @@ interface CountdownTimerProps {
 
 const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState<CountdownTime>({
-    days: 12,
-    hours: 8,
-    minutes: 45,
-    seconds: 12,
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
   });
 
   useEffect(() => {
-    if (!targetDate) return;
+    if (!targetDate) {
+      // Show static time if no target date
+      setTimeLeft({ days: 12, hours: 8, minutes: 45, seconds: 12 });
+      return;
+    }
 
-    const timer = setInterval(() => {
+    const calculateTime = () => {
       const now = new Date().getTime();
       const distance = targetDate.getTime() - now;
 
       if (distance < 0) {
-        clearInterval(timer);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
+        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       }
 
-      setTimeLeft({
+      return {
         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
         hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
         minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
         seconds: Math.floor((distance % (1000 * 60)) / 1000),
-      });
+      };
+    };
+
+    // Calculate immediately on mount
+    setTimeLeft(calculateTime());
+
+    // Update every second
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTime());
     }, 1000);
 
     return () => clearInterval(timer);
