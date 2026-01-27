@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ragnarok Fest - The Ultimate Tech Odyssey</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f4af25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#181611",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>.meander-pattern {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuB1tGTR8sbboS9ZGcJU6iaZN8_b_1efaWydHk0vaDfMKFSdF3sMZNiuj2xkZ880qhg75e1PvtJHf7mnsgu90cpwBEzm5buZCf9cIPH6BU4EEe945rcNje31WRVaVTqUK2u56VuJCBXd8NllQUksZCcQnDS5T3VNtIc9WL9tM02uEV8Js4kqBcQU6bYnMDKaPKC0ziokUTI9JdLBc9GdkF0L5Xfd_Z8xkh09KREWNxs3Ew1WQm_h5kx5ooYpudMBxNyxLqkWyedpMaxf)
+    }
+.hero-gradient {
+    background: linear-gradient(rgba(24, 22, 17, 0.8) 0%, rgba(24, 22, 17, 0.4) 50%, rgba(24, 22, 17, 0.9) 100%)
+    }</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white transition-colors duration-300">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-[#393328] bg-background-dark/80 backdrop-blur-md px-6 md:px-20 py-3">
+<div class="mx-auto flex max-w-[1200px] items-center justify-between whitespace-nowrap">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-black leading-tight tracking-tight uppercase">Ragnarok Fest</h2>
+</div>
+<div class="hidden lg:flex items-center gap-9">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Home</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Events</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Workshops</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Schedule</a>
+</div>
+<div class="flex gap-3">
+<button class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold transition-transform hover:scale-105">
+<span class="truncate">Register for Hackathon</span>
+</button>
+<button class="hidden sm:flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-[#393328] text-white text-sm font-bold border border-[#544c3b] hover:bg-[#4a4233]">
+<span class="truncate">Login / Sign Up</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<!-- Hero Section -->
+<section class="relative w-full @container">
+<div class="relative flex min-h-[85vh] w-full flex-col items-center justify-center px-4 py-20 text-center overflow-hidden">
+<!-- Cinematic Background -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 hero-gradient"></div>
+<img class="h-full w-full object-cover opacity-40 grayscale" data-alt="Dramatic storm clouds over a marble greek temple ruins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEYHZX0m9wA1uLU8FZHcjgCfIdZE8lyM3OBCJjXBkzPJs6anDBxpJmQwFGlCGDuGZvZ15NDKaAdqHsgcP59cg0dil6rDtlXGJzJiE7XOYu0yY6S1oT0TkrXuPyyYTiRf8rUsOVQIO6SIIQb4KGWaAxCFyY_JCpx0ht17J8BECzPzQv1nGh57vTgvoPmtqR9a9xrIFFAWFoGezI-LFOsxOnSbEtNmr1q6CEVdbWlvUPSgXq9vDqb6iddFb2nawcIfYEDYZfwfd5eg5u"/>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 flex max-w-[960px] flex-col items-center gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex justify-center mb-2">
+<span class="material-symbols-outlined text-primary text-6xl drop-shadow-[0_0_15px_rgba(244,175,37,0.8)]">bolt</span>
+</div>
+<h1 class="text-white text-5xl font-black leading-tight tracking-[-0.033em] md:text-7xl uppercase">
+                                RAGNAROK
+                                <span class="block text-primary text-3xl md:text-5xl mt-2 tracking-widest font-light">The Ultimate Tech Odyssey</span>
+</h1>
+<p class="mx-auto max-w-[720px] text-[#bab09c] text-lg font-normal leading-relaxed md:text-xl">
+                                Where the divinity of ancient Olympus meets the innovation of the digital age. Join the battle of wits, code, and legendary creativity.
+                            </p>
+</div>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-primary text-background-dark text-lg font-black uppercase tracking-wider transition-all hover:shadow-[0_0_20px_rgba(244,175,37,0.5)]">
+<span class="truncate">Download Brochure</span>
+</button>
+<button class="flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-transparent border-2 border-primary text-primary text-lg font-black uppercase tracking-wider hover:bg-primary/10">
+<span class="truncate">Explore Events</span>
+</button>
+</div>
+</div>
+<!-- Meander Decoration -->
+<div class="absolute bottom-0 left-0 w-full h-4 meander-pattern opacity-50"></div>
+</div>
+</section>
+<!-- Countdown Timer Section -->
+<section class="bg-[#27231b] py-12 border-y border-[#393328]">
+<div class="mx-auto max-w-[960px] px-6">
+<div class="flex flex-col items-center gap-6">
+<h3 class="text-primary text-sm font-bold uppercase tracking-[0.3em]">The Storm Approaches In</h3>
+<div class="flex gap-4 md:gap-8 w-full">
+<div class="flex grow basis-0 flex-col items-stretch gap-3">
+<div class="flex h-20 grow items-center justify-center rounded-xl bg-[#181611] border border-[#544c3b] shadow-inner">
+<p class="text-primary text-3xl md:text-5xl font-black leading-tight font-display">12</p>
+</div>
+<div class="flex items-center justify-center"><p class="text-[#bab09c] text-xs md:text-sm font-bold uppercase tracking-widest">Days</p></div>
+</div>
+<div class="flex grow basis-0 flex-col items-stretch gap-3">
+<div class="flex h-20 grow items-center justify-center rounded-xl bg-[#181611] border border-[#544c3b] shadow-inner">
+<p class="text-primary text-3xl md:text-5xl font-black leading-tight">08</p>
+</div>
+<div class="flex items-center justify-center"><p class="text-[#bab09c] text-xs md:text-sm font-bold uppercase tracking-widest">Hours</p></div>
+</div>
+<div class="flex grow basis-0 flex-col items-stretch gap-3">
+<div class="flex h-20 grow items-center justify-center rounded-xl bg-[#181611] border border-[#544c3b] shadow-inner">
+<p class="text-primary text-3xl md:text-5xl font-black leading-tight">45</p>
+</div>
+<div class="flex items-center justify-center"><p class="text-[#bab09c] text-xs md:text-sm font-bold uppercase tracking-widest">Minutes</p></div>
+</div>
+<div class="flex grow basis-0 flex-col items-stretch gap-3">
+<div class="flex h-20 grow items-center justify-center rounded-xl bg-[#181611] border border-[#544c3b] shadow-inner">
+<p class="text-primary text-3xl md:text-5xl font-black leading-tight">12</p>
+</div>
+<div class="flex items-center justify-center"><p class="text-[#bab09c] text-xs md:text-sm font-bold uppercase tracking-widest">Seconds</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Section -->
+<section class="mx-auto max-w-[1200px] px-6 py-20 @container">
+<div class="flex flex-col gap-12">
+<div class="flex flex-col gap-4 text-center md:text-left">
+<h2 class="text-white tracking-tight text-4xl md:text-5xl font-black uppercase">
+                            Divine Tech Pillars
+                        </h2>
+<div class="h-1 w-20 bg-primary mx-auto md:mx-0"></div>
+<p class="text-[#bab09c] text-lg font-normal leading-normal max-w-[720px]">
+                            Ascend beyond the ordinary with challenges designed for the modern gods of engineering and creativity.
+                        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="group flex flex-col gap-6 rounded-xl border border-[#544c3b] bg-[#27231b] p-8 transition-all hover:-translate-y-2 hover:border-primary/50">
+<div class="flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">code</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-white text-xl font-bold uppercase tracking-tight">Grand Hackathon</h3>
+<p class="text-[#bab09c] text-sm leading-relaxed">A 48-hour odyssey of coding and creation. Build the future on the foundation of the ancients.</p>
+</div>
+<a class="mt-4 text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:underline" href="#">
+                                Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="group flex flex-col gap-6 rounded-xl border border-[#544c3b] bg-[#27231b] p-8 transition-all hover:-translate-y-2 hover:border-primary/50">
+<div class="flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-white text-xl font-bold uppercase tracking-tight">Divine Workshops</h3>
+<p class="text-[#bab09c] text-sm leading-relaxed">Master the crafts of AI, Blockchain, and Robotics with titans of the tech industry.</p>
+</div>
+<a class="mt-4 text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:underline" href="#">
+                                Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="group flex flex-col gap-6 rounded-xl border border-[#544c3b] bg-[#27231b] p-8 transition-all hover:-translate-y-2 hover:border-primary/50">
+<div class="flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">sports_esports</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-white text-xl font-bold uppercase tracking-tight">Gaming Arena</h3>
+<p class="text-[#bab09c] text-sm leading-relaxed">The ultimate trial of reflexes and strategy. E-sports tournaments with legendary stakes.</p>
+</div>
+<a class="mt-4 text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:underline" href="#">
+                                Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="relative bg-background-dark py-20 overflow-hidden">
+<!-- Meander Decoration -->
+<div class="absolute top-0 left-0 w-full h-1 meander-pattern opacity-20"></div>
+<div class="mx-auto max-w-[960px] px-6">
+<div class="flex flex-col items-center justify-center gap-8 text-center bg-gradient-to-br from-[#27231b] to-[#181611] p-12 rounded-2xl border border-[#393328] relative">
+<!-- Abstract lightning background -->
+<div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+<span class="material-symbols-outlined absolute -top-10 -left-10 text-[20rem] text-primary">bolt</span>
+</div>
+<div class="flex flex-col gap-4 relative z-10">
+<h2 class="text-white text-4xl md:text-5xl font-black uppercase leading-tight">
+                                Join the Divine <span class="text-primary">Revolution</span>
+</h2>
+<p class="text-[#bab09c] text-base font-normal leading-normal max-w-[600px] mx-auto">
+                                The gates of Olympus are opening. Claim your place among the tech legends of this year's biggest college festival.
+                            </p>
+</div>
+<div class="relative z-10 w-full max-w-sm">
+<button class="w-full flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 bg-primary text-background-dark text-lg font-black uppercase tracking-widest transition-all hover:scale-[1.02] shadow-[0_10px_30px_-10px_rgba(244,175,37,0.4)]">
+<span class="truncate">Register Now</span>
+</button>
+<p class="mt-4 text-xs text-[#544c3b] uppercase font-bold tracking-widest">Limited Slots Available for Flagship Events</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1 meander-pattern opacity-20"></div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black py-12 border-t border-[#393328]">
+<div class="mx-auto max-w-[1200px] px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col gap-4 items-center md:items-start">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">bolt</span>
+<h4 class="text-white text-lg font-black uppercase">Ragnarok Fest</h4>
+</div>
+<p class="text-[#544c3b] text-sm text-center md:text-left">© 2024 College Name. All rights reserved.<br/>Crafted for the Gods of Tech.</p>
+</div>
+<div class="flex gap-8 text-[#bab09c] text-sm font-medium">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Us</a>
+</div>
+<div class="flex gap-4">
+<a class="size-10 flex items-center justify-center rounded-full bg-[#393328] text-white hover:bg-primary hover:text-background-dark transition-all" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+<a class="size-10 flex items-center justify-center rounded-full bg-[#393328] text-white hover:bg-primary hover:text-background-dark transition-all" href="#">
+<span class="material-symbols-outlined text-lg">share</span>
+</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

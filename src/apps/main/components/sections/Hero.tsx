@@ -11,11 +11,6 @@ const Hero: React.FC = () => {
         {/* Hero Content - Background now handled by parent */}
         <div className="relative z-10 flex max-w-[960px] flex-col items-center gap-8">
           <div className="flex flex-col gap-4">
-            <div className="flex justify-center mb-2">
-              <span className="material-symbols-outlined text-primary text-6xl drop-shadow-[0_0_15px_rgba(244,175,37,0.8)]">
-                bolt
-              </span>
-            </div>
             <h1 className="text-white text-5xl font-black leading-tight tracking-[-0.033em] md:text-7xl uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
               RAGNAROK
               <span className="block text-primary text-3xl md:text-5xl mt-2 tracking-widest font-light drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
@@ -33,15 +28,12 @@ const Hero: React.FC = () => {
             </button>
             <button 
               onClick={() => navigate('/events')}
-              className="flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-transparent border-2 border-primary text-primary text-lg font-black uppercase tracking-wider hover:bg-primary/10 hover:scale-105 transition-all"
+              className="flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-transparent border-2 border-[#60a5fa] text-[#93c5fd] text-lg font-black uppercase tracking-wider hover:bg-[#1d3b66]/60 hover:text-white hover:scale-105 transition-all"
             >
               <span className="truncate">Explore Events</span>
             </button>
           </div>
         </div>
-
-        {/* Meander Decoration */}
-        <div className="absolute bottom-0 left-0 w-full h-4 meander-pattern opacity-50"></div>
       </div>
     </section>
   );

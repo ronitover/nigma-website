@@ -3,7 +3,7 @@ import './InfoMap.css';
 
 const InfoMap: React.FC = () => {
   return (
-    <section className="py-20 px-4 lg:px-40 bg-background-dark/95 relative">
+    <section className="py-20 px-4 lg:px-40 relative">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         {/* Info Section */}
         <div className="flex flex-col gap-6">
@@ -22,9 +22,9 @@ const InfoMap: React.FC = () => {
                 <span className="material-symbols-outlined">location_on</span>
               </div>
               <div>
-                <p className="text-white font-bold uppercase tracking-wider">Our Sacred Grounds</p>
+                <p className="text-white font-bold uppercase tracking-wider">Dr. NSAM First Grade College</p>
                 <p className="text-[#bab09c] text-sm">
-                  123 Divine Avenue, Innovation Hub, Athens 10432
+                  Nitte Off-Campus Center, Udupi, Karnataka, India
                 </p>
               </div>
             </div>
@@ -35,7 +35,7 @@ const InfoMap: React.FC = () => {
               </div>
               <div>
                 <p className="text-white font-bold uppercase tracking-wider">
-                  Scrolls of Communication
+                  EMAIL US AT
                 </p>
                 <p className="text-[#bab09c] text-sm">oracle@ragnarokfest.edu</p>
               </div>
@@ -47,7 +47,7 @@ const InfoMap: React.FC = () => {
               </div>
               <div>
                 <p className="text-white font-bold uppercase tracking-wider">Divine Hotline</p>
-                <p className="text-[#bab09c] text-sm">+1 (555) OLYMPUS-TECH</p>
+                <p className="text-[#bab09c] text-sm">+91 8310903547</p>
               </div>
             </div>
           </div>
@@ -65,12 +65,12 @@ const InfoMap: React.FC = () => {
         {/* Stylized Map Section */}
         <div className="relative group">
           {/* Greek-themed Interactive Map */}
-          <div className="w-full aspect-[4/3] rounded-xl overflow-hidden border-2 border-primary/40 shadow-2xl relative bg-[#1a1510]">
-            {/* Actual Map - You can replace this iframe with Google Maps or any map service */}
+          <div className="w-full aspect-[4/3] rounded-xl overflow-hidden border-2 border-primary/40 shadow-2xl relative bg-transparent">
+            {/* Google Maps embed for Dr. NSAM First Grade College, Nitte */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1!2d-73.98!3d40.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM40zMCcwMC4wIk4gNzPCsDU4JzQ4LjAiVw!5e0!3m2!1sen!2sus!4v1234567890"
-              className="w-full h-full grayscale-[0.8] contrast-125 brightness-75 saturate-50"
-              style={{ border: 0, filter: 'hue-rotate(20deg)' }}
+              src="https://www.google.com/maps?q=Dr.+NSAM+First+Grade+College,+Nitte&output=embed"
+              className="w-full h-full"
+              style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -109,15 +109,6 @@ const InfoMap: React.FC = () => {
             <svg className="absolute bottom-2 right-2 w-8 h-8 text-primary/60 pointer-events-none z-20 rotate-180" viewBox="0 0 100 100" fill="currentColor">
               <path d="M0,0 L100,0 L100,15 L15,15 L15,100 L0,100 Z" />
             </svg>
-
-            {/* Location Badge Overlay */}
-            <div className="absolute top-16 left-1/2 -translate-x-1/2 pointer-events-none z-20">
-              <div className="bg-gradient-to-r from-[#1a1510] via-primary/90 to-[#1a1510] px-6 py-2 border border-primary/60 shadow-lg">
-                <p className="text-[#181611] text-xs font-black uppercase tracking-wider text-center">
-                  📍 Divine Innovation Hub
-                </p>
-              </div>
-            </div>
 
             {/* Compass Rose - Bottom Right */}
             <div className="absolute bottom-16 right-4 w-16 h-16 pointer-events-none z-20 opacity-60">
