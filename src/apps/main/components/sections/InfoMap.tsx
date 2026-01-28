@@ -3,10 +3,10 @@ import './InfoMap.css';
 
 const InfoMap: React.FC = () => {
   return (
-    <section className="py-20 px-4 lg:px-40 relative">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="py-20 px-4 lg:px-10 relative">
+      <div className="max-w-6xl mx-auto grid grid-cols-12 gap-8 items-center">
         {/* Info Section */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 col-span-12 lg:col-span-6">
           <div className="flex items-center gap-4">
             <div className="h-[2px] w-12 bg-primary"></div>
             <h2 className="text-white text-3xl font-bold uppercase tracking-tight">The Citadel</h2>
@@ -63,9 +63,9 @@ const InfoMap: React.FC = () => {
         </div>
 
         {/* Stylized Map Section */}
-        <div className="relative group">
+        <div className="relative group flex justify-center col-span-12 lg:col-span-6">
           {/* Greek-themed Interactive Map */}
-          <div className="w-full aspect-[4/3] rounded-xl overflow-hidden border-2 border-primary/40 shadow-2xl relative bg-transparent">
+          <div className="w-full max-w-md lg:max-w-lg aspect-[4/3] rounded-xl overflow-hidden border-2 border-primary/40 shadow-2xl bg-transparent">
             {/* Google Maps embed for Dr. NSAM First Grade College, Nitte */}
             <iframe
               src="https://www.google.com/maps?q=Dr.+NSAM+First+Grade+College,+Nitte&output=embed"
@@ -75,60 +75,6 @@ const InfoMap: React.FC = () => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-
-            {/* Greek Border Overlay - Top */}
-            <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[#1a1510] via-[#1a1510]/80 to-transparent pointer-events-none z-10">
-              <div className="h-3 bg-repeat-x opacity-70 mt-2"
-                style={{
-                  backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1tGTR8sbboS9ZGcJU6iaZN8_b_1efaWydHk0vaDfMKFSdF3sMZNiuj2xkZ880qhg75e1PvtJHf7mnsgu90cpwBEzm5buZCf9cIPH6BU4EEe945rcNje31WRVaVTqUK2u56VuJCBXd8NllQUksZCcQnDS5T3VNtIc9WL9tM02uEV8Js4kqBcQU6bYnMDKaPKC0ziokUTI9JdLBc9GdkF0L5Xfd_Z8xkh09KREWNxs3Ew1WQm_h5kx5ooYpudMBxNyxLqkWyedpMaxf")',
-                  backgroundSize: 'auto 100%',
-                }}
-              ></div>
-            </div>
-
-            {/* Greek Border Overlay - Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#1a1510] via-[#1a1510]/80 to-transparent pointer-events-none z-10">
-              <div className="h-3 bg-repeat-x opacity-70 mb-2"
-                style={{
-                  backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1tGTR8sbboS9ZGcJU6iaZN8_b_1efaWydHk0vaDfMKFSdF3sMZNiuj2xkZ880qhg75e1PvtJHf7mnsgu90cpwBEzm5buZCf9cIPH6BU4EEe945rcNje31WRVaVTqUK2u56VuJCBXd8NllQUksZCcQnDS5T3VNtIc9WL9tM02uEV8Js4kqBcQU6bYnMDKaPKC0ziokUTI9JdLBc9GdkF0L5Xfd_Z8xkh09KREWNxs3Ew1WQm_h5kx5ooYpudMBxNyxLqkWyedpMaxf")',
-                  backgroundSize: 'auto 100%',
-                }}
-              ></div>
-            </div>
-
-            {/* Decorative Corner Frames */}
-            <svg className="absolute top-2 left-2 w-8 h-8 text-primary/60 pointer-events-none z-20" viewBox="0 0 100 100" fill="currentColor">
-              <path d="M0,0 L100,0 L100,15 L15,15 L15,100 L0,100 Z" />
-            </svg>
-            <svg className="absolute top-2 right-2 w-8 h-8 text-primary/60 pointer-events-none z-20 rotate-90" viewBox="0 0 100 100" fill="currentColor">
-              <path d="M0,0 L100,0 L100,15 L15,15 L15,100 L0,100 Z" />
-            </svg>
-            <svg className="absolute bottom-2 left-2 w-8 h-8 text-primary/60 pointer-events-none z-20 -rotate-90" viewBox="0 0 100 100" fill="currentColor">
-              <path d="M0,0 L100,0 L100,15 L15,15 L15,100 L0,100 Z" />
-            </svg>
-            <svg className="absolute bottom-2 right-2 w-8 h-8 text-primary/60 pointer-events-none z-20 rotate-180" viewBox="0 0 100 100" fill="currentColor">
-              <path d="M0,0 L100,0 L100,15 L15,15 L15,100 L0,100 Z" />
-            </svg>
-
-            {/* Compass Rose - Bottom Right */}
-            <div className="absolute bottom-16 right-4 w-16 h-16 pointer-events-none z-20 opacity-60">
-              <div className="relative w-full h-full">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 border-2 border-primary rounded-full"></div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-primary text-xs font-bold">
-                    <div className="absolute -top-6 left-1/2 -translate-x-1/2">N</div>
-                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2">S</div>
-                    <div className="absolute top-1/2 -left-6 -translate-y-1/2">W</div>
-                    <div className="absolute top-1/2 -right-6 -translate-y-1/2">E</div>
-                  </div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-1 h-12 bg-gradient-to-b from-primary via-primary to-transparent"></div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

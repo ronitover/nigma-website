@@ -37,11 +37,13 @@ const Home: React.FC = () => {
         <Header />
         <main className="flex-1">
           <Hero />
-          <CountdownTimer targetDate={eventDate} />
-          <Events />
-          <HackathonBanner />
-          <Gallery />
-          <InfoMap />
+          <div className="mt-16 md:mt-28 -translate-y-[3px] transform">
+            <CountdownTimer targetDate={eventDate} />
+            <Events />
+            <HackathonBanner />
+            <Gallery />
+            <InfoMap />
+          </div>
         </main>
         <Footer />
       </div>

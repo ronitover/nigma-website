@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TechnicalTeam.css';
 
 const TechnicalTeam: React.FC = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const getCardClass = (index: number) => {
+    const base = 'technical-card group relative flex flex-col items-center';
+
+    if (hoveredIndex === null) return base;
+    if (hoveredIndex === index) return `${base} technical-card--active`;
+    if (hoveredIndex < index) return `${base} technical-card--right`;
+    return `${base} technical-card--left`;
+  };
+
   return (
     <section
       id="technical-team"
-      className="relative py-20 px-4 lg:px-24 mt-10"
+      className="relative py-10 md:py-14 px-4 lg:px-16"
     >
       {/* Decorative nebula background just for this section */}
       <div className="absolute inset-0 nebula-bg rounded-[2.5rem] border border-white/5 shadow-[0_20px_80px_rgba(0,0,0,0.7)] overflow-hidden" />
@@ -57,9 +68,15 @@ const TechnicalTeam: React.FC = () => {
         </div>
 
         {/* Team grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+        <div
+          className="technical-team-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12"
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
           {/* Member 1 */}
-          <div className="group relative flex flex-col items-center">
+          <div
+            className={getCardClass(0)}
+            onMouseEnter={() => setHoveredIndex(0)}
+          >
             <div className="relative w-52 h-72 md:w-56 md:h-80 transition-transform duration-500 group-hover:-translate-y-4">
               <div className="absolute inset-0 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
               <div
@@ -74,17 +91,20 @@ const TechnicalTeam: React.FC = () => {
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent opacity-50" />
               <div className="text-center">
                 <h3 className="text-lg md:text-xl font-bold text-white mb-1">
-                  Erik Magnusson
+                  Ronith Joshi
                 </h3>
                 <p className="text-primary text-xs md:text-sm font-semibold tracking-wide electric-glow uppercase">
-                  System Architect
+                  Web Developer
                 </p>
               </div>
             </div>
           </div>
 
           {/* Member 2 */}
-          <div className="group relative flex flex-col items-center">
+          <div
+            className={getCardClass(1)}
+            onMouseEnter={() => setHoveredIndex(1)}
+          >
             <div className="relative w-52 h-72 md:w-56 md:h-80 transition-transform duration-500 group-hover:-translate-y-4">
               <div className="absolute inset-0 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
               <div
@@ -99,17 +119,20 @@ const TechnicalTeam: React.FC = () => {
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent opacity-50" />
               <div className="text-center">
                 <h3 className="text-lg md:text-xl font-bold text-white mb-1">
-                  Astrid Vance
+                  Prarthana Jain
                 </h3>
                 <p className="text-primary text-xs md:text-sm font-semibold tracking-wide electric-glow uppercase">
-                  Web Dev Engineer
+                  Web Developer
                 </p>
               </div>
             </div>
           </div>
 
           {/* Member 3 */}
-          <div className="group relative flex flex-col items-center">
+          <div
+            className={getCardClass(2)}
+            onMouseEnter={() => setHoveredIndex(2)}
+          >
             <div className="relative w-52 h-72 md:w-56 md:h-80 transition-transform duration-500 group-hover:-translate-y-4">
               <div className="absolute inset-0 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
               <div
@@ -124,39 +147,15 @@ const TechnicalTeam: React.FC = () => {
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent opacity-50" />
               <div className="text-center">
                 <h3 className="text-lg md:text-xl font-bold text-white mb-1">
-                  Lukas Thorne
+                  Royston Menezes
                 </h3>
                 <p className="text-primary text-xs md:text-sm font-semibold tracking-wide electric-glow uppercase">
-                  Lead UI Strategist
+                  Backend Developer
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Member 4 */}
-          <div className="group relative flex flex-col items-center">
-            <div className="relative w-52 h-72 md:w-56 md:h-80 transition-transform duration-500 group-hover:-translate-y-4">
-              <div className="absolute inset-0 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
-              <div
-                className="w-full h-full bg-center bg-no-repeat bg-contain transform group-hover:scale-110 transition-transform duration-500"
-                style={{
-                  backgroundImage:
-                    'url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2NoaewkLbG6zl6WJxjW0-8-N1GCF_rtcmw3y6PcYa3QqXfqjvDZF0XXKdovxOkgjV8Pzi515vYc6UA1QXt8YQD-js5EXgwthAsDUSZ8bxOA_g42QSyc1nBExLqlWBYaNziMysF16iwEe5regcJ96GU7wGY2d3N9l5DE2lKiVVDr4XY5iR-3tbUGN7yMtYBAR4HwFsLKC-YOMpeh4o-2VcILAytHmb4IluV1KX1jUgZhc_1voN8HPCM9yCttomJed9TOGSX8pi2Fiz")',
-                }}
-              />
-            </div>
-            <div className="glass-plaque w-full mt-4 p-5 rounded-xl relative overflow-hidden group-hover:border-primary/50 transition-colors">
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent opacity-50" />
-              <div className="text-center">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-1">
-                  Freya Sterling
-                </h3>
-                <p className="text-primary text-xs md:text-sm font-semibold tracking-wide electric-glow uppercase">
-                  Cloud Infrastructure
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

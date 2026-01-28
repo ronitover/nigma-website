@@ -27,7 +27,7 @@ const TechnicalTeamPage: React.FC = () => {
       {/* Content */}
       <div className="relative" style={{ zIndex: 1 }}>
         <Header />
-        <main className="flex-1 flex items-center justify-center py-16">
+        <main className="flex-1 flex items-center justify-center py-6 md:py-10">
           <TechnicalTeam />
         </main>
         <Footer />

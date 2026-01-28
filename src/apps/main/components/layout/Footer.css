@@ -1,2 +1,34 @@
-/* Footer-specific styles can go here if needed */
-/* Currently using Tailwind classes, but this file is ready for custom styles */
+/* Landing page footer responsiveness tweaks */
+
+.landing-footer .arena-footer-content {
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .landing-footer .arena-footer-content {
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .landing-footer .arena-footer-links {
+    justify-content: center;
+  }
+
+  .landing-footer .arena-footer-text {
+    letter-spacing: 0.25em;
+    padding-bottom: 2rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-footer .arena-footer-links {
+    row-gap: 0.5rem;
+  }
+
+  .landing-footer .arena-footer-text {
+    letter-spacing: 0.18em;
+    padding-bottom: 1.5rem;
+  }
+}

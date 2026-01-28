@@ -6,7 +6,6 @@
   color: white;
   position: relative;
   overflow-x: hidden;
-  font-family: 'Space Grotesk', sans-serif;
 }
 
 /* Background - layered with constellation - reduced opacity for visibility */
@@ -35,7 +34,7 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 4.5rem;
   gap: 3rem;
 }
@@ -51,6 +50,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 0;
+  margin: 0 auto;
 }
 
 .arena-logo img {
@@ -133,25 +133,25 @@
 /* Search removed - no longer used */
 
 .arena-register-btn {
-  background: linear-gradient(135deg, #f4af25 0%, #d4af37 100%);
-  color: #0a0a0c;
+  background: transparent;
+  color: #f4af25;
   padding: 0.875rem 2rem;
   border-radius: 0.5rem;
-  border: none;
+  border: 1px solid rgba(244, 175, 37, 0.7);
   font-weight: 800;
   font-size: 0.9375rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 0 20px rgba(244, 175, 37, 0.3);
+  box-shadow: none;
   white-space: nowrap;
 }
 
 .arena-register-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 30px rgba(244, 175, 37, 0.5);
-  filter: brightness(1.1);
+  box-shadow: 0 0 20px rgba(244, 175, 37, 0.4);
+  background: rgba(244, 175, 37, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -294,18 +294,39 @@
 .arena-event-card {
   background: linear-gradient(145deg, #24211a, #12110d);
   box-shadow: 10px 10px 20px #0a0907, -5px -5px 15px rgba(244, 175, 37, 0.05);
-  border: 1px solid rgba(244, 175, 37, 0.2);
+  border: 1px solid rgba(30, 64, 175, 0.4);
   border-radius: 1rem;
+  overflow: hidden;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
   height: 100%;
+  position: relative;
+}
+
+.arena-event-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.25), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(244, 175, 37, 0.2), transparent 55%),
+    linear-gradient(145deg, #24211a, #12110d);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+}
+
+.arena-event-card:hover::before {
+  opacity: 1;
 }
 
 .arena-event-card:hover {
-  border-color: #f4af25;
-  box-shadow: 0 0 25px rgba(244, 175, 37, 0.2);
+  box-shadow:
+    0 0 28px rgba(96, 165, 250, 0.35),
+    0 0 24px rgba(244, 175, 37, 0.35);
   transform: translateY(-5px);
 }
 
@@ -351,6 +372,29 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #f4af25;
+}
+
+.arena-card-group-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(37, 99, 235, 0.25);
+  border: 1px solid rgba(96, 165, 250, 0.7);
+  color: #dbeafe;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.arena-card-group-badge .material-symbols-outlined {
+  font-size: 1rem;
 }
 
 .arena-card-content {
@@ -406,10 +450,10 @@
 .arena-card-btn {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(145deg, #24211a, #12110d);
-  border: 1px solid rgba(244, 175, 37, 0.4);
+  background: linear-gradient(145deg, #0b1220, #020617);
+  border: 1px solid rgba(59, 130, 246, 0.6);
   border-radius: 0.75rem;
-  color: #f4af25;
+  color: #bfdbfe;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -423,8 +467,8 @@
 }
 
 .arena-card-btn:hover {
-  background: #f4af25;
-  color: #181611;
+  background: linear-gradient(145deg, #1d4ed8, #2563eb);
+  color: #e5f2ff;
 }
 
 /* Footer */
@@ -454,6 +498,9 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
   color: rgba(255, 255, 255, 0.4);
 }
 

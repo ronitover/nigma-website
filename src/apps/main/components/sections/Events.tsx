@@ -81,9 +81,9 @@ const Events: React.FC = () => {
 
   return (
     <section className="w-full flex justify-center">
-      <div className="flex flex-col max-w-[1200px] w-full px-6 py-10">
+      <div className="grid grid-cols-12 gap-8 max-w-6xl w-full px-6 py-10">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-10">
+        <div className="flex flex-col items-center text-center mb-10 col-span-12">
           <span className="text-primary text-sm font-bold uppercase tracking-[0.3em] mb-2">
             Mythic Challenges
           </span>
@@ -94,7 +94,7 @@ const Events: React.FC = () => {
         </div>
 
         {/* Category Tabs (main trials only) */}
-        <div className="arena-categories mb-6">
+        <div className="arena-categories mb-6 col-span-12">
           {categories.map((category) => (
             <button
               key={category.id}
@@ -110,7 +110,7 @@ const Events: React.FC = () => {
         </div>
 
         {/* Events Grid - styled like Events Arena */}
-        <div className="arena-events-grid">
+        <div className="arena-events-grid col-span-12">
           {filteredEvents.map((event) => (
             <div key={event.id} className="arena-event-card">
               <div className="arena-card-image-wrapper">
@@ -121,6 +121,10 @@ const Events: React.FC = () => {
                   aria-label={event.imageAlt}
                 ></div>
                 <div className="arena-card-overlay"></div>
+                <div className="arena-card-group-badge">
+                  <span className="material-symbols-outlined">groups</span>
+                  <span>3</span>
+                </div>
                 <div className="arena-card-badge">{event.category}</div>
               </div>
               <div className="arena-card-content">

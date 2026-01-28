@@ -89,24 +89,15 @@ const EventsArena: React.FC = () => {
       {/* Header / Nav */}
       <header className="arena-header">
         <div className="arena-header-content">
-          <div className="arena-nav-left">
-            <div className="arena-logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-              <img 
-                src={headerLogo} 
-                alt="NITTE Logo" 
-                className="h-12 w-auto object-contain"
-              />
-            </div>
-            <nav className="arena-nav-links">
-              <a onClick={() => navigate('/')} className="arena-nav-link">Home</a>
-              <a href="/events" className="arena-nav-link arena-nav-link-active">Arena</a>
-              <a href="#chronicles" className="arena-nav-link">Chronicles</a>
-              <a href="#rules" className="arena-nav-link">Rules</a>
-              <a href="#sponsors" className="arena-nav-link">Sponsors</a>
-            </nav>
+          <div className="arena-logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+            <img 
+              src={headerLogo} 
+              alt="NITTE Logo" 
+              className="h-12 w-auto object-contain"
+            />
           </div>
           <div className="arena-nav-right">
-            <button className="arena-register-btn">REGISTER</button>
+            <button className="arena-register-btn">Hackathon</button>
           </div>
         </div>
       </header>
@@ -150,6 +141,10 @@ const EventsArena: React.FC = () => {
                   aria-label={event.imageAlt}
                 ></div>
                 <div className="arena-card-overlay"></div>
+                <div className="arena-card-group-badge">
+                  <span className="material-symbols-outlined">groups</span>
+                  <span>3</span>
+                </div>
                 <div className="arena-card-badge">{event.category}</div>
               </div>
               <div className="arena-card-content">

@@ -1,2 +1,27 @@
-/* CountdownTimer-specific styles can go here if needed */
-/* Currently using Tailwind classes, but this file is ready for custom styles */
+/* CountdownTimer-specific styles */
+/* Ice-like blue transparent background */
+
+.countdown-ice-bg {
+  position: relative;
+}
+
+.countdown-ice-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.35), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.35), transparent 55%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75));
+  opacity: 0.9;
+  filter: drop-shadow(0 25px 60px rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 0;
+}
+
+.countdown-ice-bg > * {
+  position: relative;
+  z-index: 1;
+}

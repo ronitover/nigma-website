@@ -7,43 +7,32 @@ const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="bg-[#181611] py-12 border-t border-[#393328]">
-        <div className="mx-auto max-w-[1200px] px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col gap-4 items-center md:items-start">
-            <div className="flex items-center gap-2 text-primary">
-              <span className="material-symbols-outlined">bolt</span>
-              <h4 className="text-white text-lg font-black uppercase">Ragnarok Fest</h4>
-            </div>
-            <p className="text-[#544c3b] text-sm text-center md:text-left">
-              © 2026 College Name. All rights reserved.<br/>
-              Crafted for the Gods of Tech.
-            </p>
+      <footer className="arena-footer landing-footer">
+        <div className="arena-footer-content">
+          <div className="arena-footer-links">
+            <a href="#rules">Book of Rules</a>
+            <span className="arena-footer-divider">•</span>
+            <a href="#conduct">Code of Conduct</a>
+            <span className="arena-footer-divider">•</span>
+            <a href="#privacy">Privacy Rune</a>
           </div>
-          
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-[#bab09c] text-sm font-medium">
-            <div className="flex gap-8">
-              <a className="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-              <a className="hover:text-primary transition-colors" href="#">Terms of Service</a>
-              <a className="hover:text-primary transition-colors" href="#">Contact Us</a>
+          <button
+            type="button"
+            onClick={() => setIsTechTeamOpen(true)}
+            className="px-4 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-background-dark transition-colors text-xs md:text-sm mt-2 md:mt-0"
+          >
+            Technical Team
+          </button>
+          <div className="arena-footer-social">
+            <div className="arena-social-icon">
+              <span className="material-symbols-outlined">alternate_email</span>
             </div>
-            <button
-              type="button"
-              onClick={() => setIsTechTeamOpen(true)}
-              className="px-4 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-background-dark transition-colors text-xs md:text-sm"
-            >
-              Technical Team
-            </button>
-          </div>
-          
-          <div className="flex gap-4">
-            <a className="size-10 flex items-center justify-center rounded-full bg-[#393328] text-white hover:bg-primary hover:text-background-dark transition-all" href="#">
-              <span className="material-symbols-outlined text-lg">public</span>
-            </a>
-            <a className="size-10 flex items-center justify-center rounded-full bg-[#393328] text-white hover:bg-primary hover:text-background-dark transition-all" href="#">
-              <span className="material-symbols-outlined text-lg">share</span>
-            </a>
+            <div className="arena-social-icon">
+              <span className="material-symbols-outlined">public</span>
+            </div>
           </div>
         </div>
+        <p className="arena-footer-text">Ragnarok © 2064 • Powered by the Forge of Asgard</p>
       </footer>
 
       {isTechTeamOpen && (

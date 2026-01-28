@@ -41,10 +41,55 @@ interface Connection {
   opacity: number;
 }
 
+interface RegistrationMember {
+  fullName: string;
+  college: string;
+  cityState: string;
+  phone: string;
+}
+
+const getTeamSizeFromRules = (event: EventDetail | null): number => {
+  if (!event || !event.rules) return 1;
+
+  const text = event.rules.join(' ').toLowerCase();
+
+  // Match "Teams of 2-4" or similar ranges
+  const rangeMatch = text.match(/teams?\s+of\s+(\d+)\s*-\s*(\d+)/);
+  if (rangeMatch) {
+    const max = parseInt(rangeMatch[2], 10);
+    return Math.min(Math.max(max, 1), 3);
+  }
+
+  // Match "Teams of 2"
+  const exactMatch = text.match(/teams?\s+of\s+(\d+)/);
+  if (exactMatch) {
+    const size = parseInt(exactMatch[1], 10);
+    return Math.min(Math.max(size, 1), 3);
+  }
+
+  // Match "up to 3"
+  const upToMatch = text.match(/up to\s+(\d+)/);
+  if (upToMatch) {
+    const size = parseInt(upToMatch[1], 10);
+    return Math.min(Math.max(size, 1), 3);
+  }
+
+  // Special phrases
+  if (text.includes('solo or duo')) {
+    return 2;
+  }
+
+  return 1;
+};
+
 const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onClose }) => {
   const [showRegistration, setShowRegistration] = React.useState(false);
   const [showSuccess, setShowSuccess] = React.useState(false);
   const [isFlipping, setIsFlipping] = React.useState(false);
+  const [members, setMembers] = React.useState<RegistrationMember[]>([
+    { fullName: '', college: '', cityState: '', phone: '' },
+  ]);
+  const [currentMemberIndex, setCurrentMemberIndex] = React.useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const starsRef = useRef<Star[]>([]);
   const connectionsRef = useRef<Connection[]>([]);
@@ -69,6 +114,15 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const teamSize = getTeamSizeFromRules(event);
+    const effectiveSize = Math.max(1, Math.min(teamSize, members.length || teamSize));
+    const isLastMember = currentMemberIndex >= effectiveSize - 1;
+
+    if (!isLastMember) {
+      setCurrentMemberIndex((prev) => prev + 1);
+      return;
+    }
+
     setIsFlipping(true);
     setTimeout(() => {
       setShowRegistration(false);
@@ -99,12 +153,40 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
       setShowRegistration(false);
       setShowSuccess(false);
       setIsFlipping(false);
+      setCurrentMemberIndex(0);
     }
 
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen, onClose]);
+
+  // Reset registration members when event or modal opens
+  useEffect(() => {
+    if (!event || !isOpen) return;
+    const teamSize = getTeamSizeFromRules(event);
+    const effectiveSize = Math.max(1, Math.min(teamSize, 3));
+    setMembers(
+      Array.from({ length: effectiveSize }, () => ({
+        fullName: '',
+        college: '',
+        cityState: '',
+        phone: '',
+      })),
+    );
+    setCurrentMemberIndex(0);
+  }, [event, isOpen]);
+
+  const handleMemberFieldChange = (field: keyof RegistrationMember, value: string) => {
+    setMembers((prev) => {
+      const next = [...prev];
+      next[currentMemberIndex] = {
+        ...next[currentMemberIndex],
+        [field]: value,
+      };
+      return next;
+    });
+  };
 
   // Constellation animation effect
   useEffect(() => {
@@ -354,20 +436,8 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
           {/* Golden Scroll */}
           <div className={`golden-scroll ${isFlipping ? 'scroll-flipping' : ''}`}>
             {showSuccess ? (
-              /* Success Screen */
+              /* Success Screen - Ticket + Back Button */
               <div className="scroll-content success-screen">
-                {/* Header */}
-                <div className="success-header">
-                  <h1 className="success-title">
-                    <span className="material-symbols-outlined success-icon">verified</span>
-                    Registration Victorious
-                  </h1>
-                  <p className="success-subtitle">
-                    Your name has been etched in gold into the halls of Valhalla.
-                  </p>
-                </div>
-
-                {/* Confirmation Card */}
                 <div className="success-card">
                   <div className="success-card-image">
                     <div className="success-card-overlay"></div>
@@ -385,27 +455,15 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                           <p>Warrior ID: RAG-ODIN-2024</p>
                         </div>
                       </div>
-                      <button className="success-ticket-btn">
-                        <span>VIEW TICKET</span>
-                      </button>
                     </div>
                   </div>
                 </div>
 
-                {/* Return Button */}
                 <div className="success-actions">
                   <button className="success-return-btn" onClick={onClose}>
-                    <span className="material-symbols-outlined">swords</span>
-                    <span>Return to Arena</span>
-                    <span className="material-symbols-outlined">swords</span>
+                    <span className="material-symbols-outlined">arrow_back</span>
+                    <span>Back to Events</span>
                   </button>
-                </div>
-
-                {/* Decorative Icons */}
-                <div className="success-decorations">
-                  <span className="material-symbols-outlined">temple_hindu</span>
-                  <span className="material-symbols-outlined">mountain_flag</span>
-                  <span className="material-symbols-outlined">auto_awesome</span>
                 </div>
               </div>
             ) : !showRegistration ? (
@@ -468,7 +526,10 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                     <span className="material-symbols-outlined registration-icon">history_edu</span>
                   </div>
                   <h1 className="registration-title">Enlist Your Name</h1>
-                  <p className="registration-subtitle">Warrior Registration Form</p>
+                  <p className="registration-subtitle">
+                    {currentMemberIndex === 0 ? 'Team Leader' : `Member ${currentMemberIndex + 1}`}{' '}
+                    Registration
+                  </p>
                   <div className="registration-divider"></div>
                 </div>
 
@@ -481,6 +542,8 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                       placeholder="e.g. Ragnar Lothbrok" 
                       required 
                       type="text"
+                      value={members[currentMemberIndex]?.fullName || ''}
+                      onChange={(e) => handleMemberFieldChange('fullName', e.target.value)}
                     />
                   </div>
 
@@ -491,6 +554,8 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                       placeholder="Asgard Institute of Technology" 
                       required 
                       type="text"
+                      value={members[currentMemberIndex]?.college || ''}
+                      onChange={(e) => handleMemberFieldChange('college', e.target.value)}
                     />
                   </div>
 
@@ -502,6 +567,8 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                         placeholder="Midgard, NY" 
                         required 
                         type="text"
+                        value={members[currentMemberIndex]?.cityState || ''}
+                        onChange={(e) => handleMemberFieldChange('cityState', e.target.value)}
                       />
                     </div>
                     <div className="form-field">
@@ -511,6 +578,8 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                         placeholder="+1 (555) VALHALLA" 
                         required 
                         type="tel"
+                        value={members[currentMemberIndex]?.phone || ''}
+                        onChange={(e) => handleMemberFieldChange('phone', e.target.value)}
                       />
                     </div>
                   </div>
@@ -520,7 +589,12 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                       <span className="form-submit-overlay"></span>
                       <div className="form-submit-content">
                         <span className="material-symbols-outlined">swords</span>
-                        JOIN THE BATTLE
+                        {(() => {
+                          const teamSize = getTeamSizeFromRules(event);
+                          const effectiveSize = Math.max(1, Math.min(teamSize, members.length || teamSize));
+                          const isLastMember = currentMemberIndex >= effectiveSize - 1;
+                          return isLastMember ? 'Submit Registration' : 'Next Member';
+                        })()}
                         <span className="material-symbols-outlined">swords</span>
                       </div>
                     </button>

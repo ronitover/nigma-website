@@ -1,2 +1,28 @@
-/* Hero-specific styles can go here if needed */
+/* Hero-specific styles */
 /* The hero-gradient and meander-pattern classes are defined globally in index.css */
+
+.hero-text-block,
+.hero-actions {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.hero-mounted .hero-text-block {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-mounted .hero-actions {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 120ms;
+}
+
+.hero-title {
+  transition: transform 700ms ease-out;
+}
+
+.hero-mounted .hero-title {
+  transform: translateY(0);
+}

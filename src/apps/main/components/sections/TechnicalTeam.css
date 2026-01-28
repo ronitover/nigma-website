@@ -37,3 +37,77 @@
   filter: blur(1px);
 }
 
+/* 3D spiral highlight effect on hover */
+
+.technical-team-grid {
+  perspective: 1600px;
+  transform-style: preserve-3d;
+}
+
+.technical-card {
+  transition:
+    transform 450ms ease,
+    opacity 350ms ease,
+    filter 350ms ease;
+  transform-origin: center center;
+  opacity: 1;
+  transform: translateY(0) translateZ(0) rotateY(0deg) scale(1);
+  filter: none;
+}
+
+.technical-card--active {
+  opacity: 1;
+  transform:
+    translateY(-12px)
+    translateZ(40px)
+    rotateY(-10deg)
+    scale(1.05);
+  filter: none;
+  z-index: 10;
+}
+
+.technical-card--left,
+.technical-card--right {
+  opacity: 0.55;
+  filter: blur(0.3px);
+}
+
+.technical-card--left {
+  transform:
+    translateY(8px)
+    translateZ(-20px)
+    rotateY(10deg)
+    scale(0.95);
+}
+
+.technical-card--right {
+  transform:
+    translateY(8px)
+    translateZ(-20px)
+    rotateY(-10deg)
+    scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .technical-team-grid {
+    perspective: 1000px;
+  }
+
+  .technical-card--active {
+    transform:
+      translateY(-8px)
+      translateZ(25px)
+      rotateY(-8deg)
+      scale(1.03);
+  }
+
+  .technical-card--left,
+  .technical-card--right {
+    transform:
+      translateY(4px)
+      translateZ(-15px)
+      rotateY(6deg)
+      scale(0.97);
+  }
+}
+
