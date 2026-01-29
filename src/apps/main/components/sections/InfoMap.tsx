@@ -3,13 +3,13 @@ import './InfoMap.css';
 
 const InfoMap: React.FC = () => {
   return (
-    <section className="py-20 px-4 lg:px-10 relative">
-      <div className="max-w-6xl mx-auto grid grid-cols-12 gap-8 items-center">
+    <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-10 relative">
+      <div className="max-w-6xl mx-auto grid grid-cols-12 gap-6 sm:gap-8 items-center">
         {/* Info Section */}
         <div className="flex flex-col gap-6 col-span-12 lg:col-span-6">
           <div className="flex items-center gap-4">
             <div className="h-[2px] w-12 bg-primary"></div>
-            <h2 className="text-white text-3xl font-bold uppercase tracking-tight">The Citadel</h2>
+            <h2 className="text-foreground text-2xl sm:text-3xl font-bold uppercase tracking-tight">The Citadel</h2>
           </div>
           <p className="text-[#bab09c] text-lg leading-relaxed">
             Nestled in the heart of the tech valley, our campus transforms into the legendary realm
@@ -22,7 +22,7 @@ const InfoMap: React.FC = () => {
                 <span className="material-symbols-outlined">location_on</span>
               </div>
               <div>
-                <p className="text-white font-bold uppercase tracking-wider">Dr. NSAM First Grade College</p>
+                <p className="text-foreground font-bold uppercase tracking-wider">Dr. NSAM First Grade College</p>
                 <p className="text-[#bab09c] text-sm">
                   Nitte Off-Campus Center, Udupi, Karnataka, India
                 </p>
@@ -34,7 +34,7 @@ const InfoMap: React.FC = () => {
                 <span className="material-symbols-outlined">mail</span>
               </div>
               <div>
-                <p className="text-white font-bold uppercase tracking-wider">
+                <p className="text-foreground font-bold uppercase tracking-wider">
                   EMAIL US AT
                 </p>
                 <p className="text-[#bab09c] text-sm">oracle@ragnarokfest.edu</p>
@@ -46,7 +46,7 @@ const InfoMap: React.FC = () => {
                 <span className="material-symbols-outlined">phone_iphone</span>
               </div>
               <div>
-                <p className="text-white font-bold uppercase tracking-wider">Divine Hotline</p>
+                <p className="text-foreground font-bold uppercase tracking-wider">Divine Hotline</p>
                 <p className="text-[#bab09c] text-sm">+91 8310903547</p>
               </div>
             </div>

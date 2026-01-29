@@ -13,7 +13,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature }) => {
         <span className="material-symbols-outlined text-3xl">{feature.icon}</span>
       </div>
       <div className="flex flex-col gap-2">
-        <h3 className="text-white text-xl font-bold uppercase tracking-tight">{feature.title}</h3>
+        <h3 className="text-foreground text-xl font-bold uppercase tracking-tight">{feature.title}</h3>
         <p className="text-[#bab09c] text-sm leading-relaxed">{feature.description}</p>
       </div>
       <a

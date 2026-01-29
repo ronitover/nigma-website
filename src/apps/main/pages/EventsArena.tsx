@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EventDetailModal from '../components/EventDetailModal';
-import { eventDetails } from '../data/eventDetails';
+import { eventDetails, getTeamSizeDisplay } from '../data/eventDetails';
 import type { EventDetail } from '../data/eventDetails';
 import ConstellationBackground from '../../../shared/components/ConstellationBackground';
 import './EventsArena.css';
@@ -70,10 +70,8 @@ const EventsArena: React.FC = () => {
     ? eventsData
     : eventsData.filter(event => {
         const cat = event.category.toLowerCase();
-  if (activeCategory === 'Commerce') return cat === 'Commerce';
-        if (activeCategory === 'it') return cat === 'it';
-        if (activeCategory === 'variety') return cat === 'variety';
-        return event.category.toLowerCase() === activeCategory;
+        const active = activeCategory.toLowerCase();
+        return cat === active;
       });
 
   return (
@@ -93,7 +91,7 @@ const EventsArena: React.FC = () => {
             <img 
               src={headerLogo} 
               alt="NITTE Logo" 
-              className="h-12 w-auto object-contain"
+              className="h-[58px] w-auto object-contain"
             />
           </div>
           <div className="arena-nav-right">
@@ -143,7 +141,7 @@ const EventsArena: React.FC = () => {
                 <div className="arena-card-overlay"></div>
                 <div className="arena-card-group-badge">
                   <span className="material-symbols-outlined">groups</span>
-                  <span>3</span>
+                  <span>{getTeamSizeDisplay(eventDetails.find((ed) => ed.id === event.id) ?? null)}</span>
                 </div>
                 <div className="arena-card-badge">{event.category}</div>
               </div>

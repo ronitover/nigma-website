@@ -69,10 +69,10 @@ const Gallery: React.FC = () => {
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <div className="px-4 lg:px-40 mb-8">
+      <div className="px-4 sm:px-6 md:px-12 lg:px-40 mb-6 sm:mb-8">
         <div className="flex items-center gap-4">
           <div className="h-[2px] w-12 bg-primary"></div>
-          <h2 className="text-white text-[28px] md:text-[36px] font-bold leading-tight tracking-[-0.015em] uppercase italic">
+          <h2 className="text-foreground text-xl sm:text-2xl md:text-[28px] lg:text-[36px] font-bold leading-tight tracking-[-0.015em] uppercase italic">
             Echoes of the Past
           </h2>
         </div>
@@ -159,7 +159,7 @@ const Gallery: React.FC = () => {
                       ></div>
 
                       {/* Frame Number */}
-                      <div className="absolute top-2 right-2 bg-primary/80 px-2 py-1 text-[#181611] text-xs font-bold">
+                      <div className="absolute top-2 right-2 bg-primary/80 px-2 py-1 text-background-dark text-xs font-bold">
                         #{String(index + 1).padStart(2, '0')}
                       </div>
 
@@ -198,7 +198,7 @@ const Gallery: React.FC = () => {
                           backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
                         }}
                       ></div>
-                      <div className="absolute top-2 right-2 bg-primary/80 px-2 py-1 text-[#181611] text-xs font-bold">
+                      <div className="absolute top-2 right-2 bg-primary/80 px-2 py-1 text-background-dark text-xs font-bold">
                         #{String(index + 1).padStart(2, '0')}
                       </div>
                       <p className="absolute bottom-3 left-3 text-primary font-bold tracking-wider uppercase text-sm drop-shadow-lg">

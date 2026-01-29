@@ -19,21 +19,21 @@ const TechnicalTeam: React.FC = () => {
       className="relative py-10 md:py-14 px-4 lg:px-16"
     >
       {/* Decorative nebula background just for this section */}
-      <div className="absolute inset-0 nebula-bg rounded-[2.5rem] border border-white/5 shadow-[0_20px_80px_rgba(0,0,0,0.7)] overflow-hidden" />
+      <div className="absolute inset-0 nebula-bg rounded-[2.5rem] border border-foreground/5 shadow-[0_20px_80px_rgba(11,28,45,0.7)] overflow-hidden" />
 
       {/* Floating elements layer */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Ruins */}
         <div
-          className="absolute top-16 left-6 w-24 h-36 bg-slate-800/20 rounded-lg -rotate-12 floating-ruin flex items-center justify-center border border-white/5"
+          className="absolute top-16 left-6 w-24 h-36 bg-slate-800/20 rounded-lg -rotate-12 floating-ruin flex items-center justify-center border border-foreground/5"
           style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)' }}
         >
-          <span className="material-symbols-outlined text-white/10 text-5xl">
+          <span className="material-symbols-outlined text-foreground/10 text-5xl">
             account_balance
           </span>
         </div>
-        <div className="absolute bottom-16 right-6 w-32 h-24 bg-slate-800/20 rounded-lg rotate-45 floating-ruin flex items-center justify-center border border-white/5">
-          <span className="material-symbols-outlined text-white/10 text-6xl">
+        <div className="absolute bottom-16 right-6 w-32 h-24 bg-slate-800/20 rounded-lg rotate-45 floating-ruin flex items-center justify-center border border-foreground/5">
+          <span className="material-symbols-outlined text-foreground/10 text-6xl">
             temple_hindu
           </span>
         </div>
@@ -58,7 +58,7 @@ const TechnicalTeam: React.FC = () => {
             Architects of Asgard
             <span className="h-px w-10 bg-primary/40" />
           </p>
-          <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-black tracking-tight bg-gradient-to-b from-white via-white to-primary/40 bg-clip-text text-transparent">
+          <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-black tracking-tight bg-gradient-to-b from-foreground via-foreground to-primary/40 bg-clip-text text-transparent">
             Technical Council
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-sm md:text-base text-[#bab09c]">
@@ -69,7 +69,7 @@ const TechnicalTeam: React.FC = () => {
 
         {/* Team grid */}
         <div
-          className="technical-team-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12"
+          className="technical-team-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12"
           onMouseLeave={() => setHoveredIndex(null)}
         >
           {/* Member 1 */}
@@ -90,7 +90,7 @@ const TechnicalTeam: React.FC = () => {
             <div className="glass-plaque w-full mt-4 p-5 rounded-xl relative overflow-hidden group-hover:border-primary/50 transition-colors">
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent opacity-50" />
               <div className="text-center">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-1">
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">
                   Ronith Joshi
                 </h3>
                 <p className="text-primary text-xs md:text-sm font-semibold tracking-wide electric-glow uppercase">
@@ -118,7 +118,7 @@ const TechnicalTeam: React.FC = () => {
             <div className="glass-plaque w-full mt-4 p-5 rounded-xl relative overflow-hidden group-hover:border-primary/50 transition-colors">
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent opacity-50" />
               <div className="text-center">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-1">
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">
                   Prarthana Jain
                 </h3>
                 <p className="text-primary text-xs md:text-sm font-semibold tracking-wide electric-glow uppercase">
@@ -146,7 +146,7 @@ const TechnicalTeam: React.FC = () => {
             <div className="glass-plaque w-full mt-4 p-5 rounded-xl relative overflow-hidden group-hover:border-primary/50 transition-colors">
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent opacity-50" />
               <div className="text-center">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-1">
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">
                   Royston Menezes
                 </h3>
                 <p className="text-primary text-xs md:text-sm font-semibold tracking-wide electric-glow uppercase">

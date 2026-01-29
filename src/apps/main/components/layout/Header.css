@@ -9,12 +9,24 @@
   backdrop-filter: none;
   background: transparent;
   border-bottom: 1px solid transparent;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+@media (min-width: 384px) {
+  .landing-header {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .landing-header {
+    padding: 0 1.5rem;
+  }
+}
+
 .landing-header--scrolled {
-  background: rgba(24, 22, 17, 0.85);
+  background: rgba(11, 28, 45, 0.85);
   border-bottom-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(12px);
@@ -45,7 +57,7 @@
 }
 
 .landing-logo img {
-  height: 3rem;
+  height: 3.625rem; /* 58px: 48px + 10px */
   width: auto;
   object-fit: contain;
 }
@@ -68,7 +80,7 @@
 
 @media (max-width: 768px) {
   .landing-logo img {
-    height: 2.5rem;
+    height: 3.125rem; /* 50px: 40px + 10px */
   }
 }
 
@@ -85,8 +97,8 @@
 }
 
 .landing-hackathon-btn {
-  background: linear-gradient(135deg, #f4af25 0%, #d4af37 100%);
-  color: #0a0a0c;
+  background: linear-gradient(135deg, #d4af5a 0%, #C9A24D 100%);
+  color: #0B1C2D;
   padding: 0.875rem 2rem;
   border-radius: 0.5rem;
   border: none;
@@ -96,13 +108,13 @@
   letter-spacing: 0.1em;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 0 20px rgba(244, 175, 37, 0.3);
+  box-shadow: 0 0 20px rgba(201, 162, 77, 0.3);
   white-space: nowrap;
 }
 
 .landing-hackathon-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 30px rgba(244, 175, 37, 0.5);
+  box-shadow: 0 4px 30px rgba(201, 162, 77, 0.5);
   filter: brightness(1.1);
 }
 

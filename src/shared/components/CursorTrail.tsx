@@ -142,7 +142,7 @@ const CursorTrail: React.FC = () => {
               );
               particleGradient.addColorStop(0, `rgba(255, 235, 157, ${particleOpacity})`);
               particleGradient.addColorStop(0.5, `rgba(255, 215, 97, ${particleOpacity * 0.5})`);
-              particleGradient.addColorStop(1, 'rgba(244, 175, 37, 0)');
+              particleGradient.addColorStop(1, 'rgba(201, 162, 77, 0)');
               
               ctx.save();
               ctx.fillStyle = particleGradient;
@@ -157,9 +157,9 @@ const CursorTrail: React.FC = () => {
           if (layer === 0) {
             // Outer glow - very soft
             ctx.lineWidth = 8;
-            ctx.strokeStyle = 'rgba(244, 175, 37, 0.08)';
+            ctx.strokeStyle = 'rgba(201, 162, 77, 0.08)';
             ctx.shadowBlur = 15;
-            ctx.shadowColor = 'rgba(244, 175, 37, 0.15)';
+            ctx.shadowColor = 'rgba(201, 162, 77, 0.15)';
           } else if (layer === 1) {
             // Middle glow
             ctx.lineWidth = 4;

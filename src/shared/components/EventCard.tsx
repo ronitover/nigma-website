@@ -13,7 +13,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         <span className="material-symbols-outlined !text-4xl">{event.icon}</span>
       </div>
       <div className="flex flex-col gap-2">
-        <h2 className="text-white text-xl font-bold leading-tight">{event.title}</h2>
+        <h2 className="text-foreground text-xl font-bold leading-tight">{event.title}</h2>
         <p className="text-[#bab09c] text-sm font-normal leading-relaxed uppercase tracking-widest">
           {event.category}
         </p>
@@ -21,7 +21,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
           <span className="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded border border-primary/20">
             {event.difficulty}
           </span>
-          <span className="text-white/40 text-[10px] font-bold uppercase">{event.teamSize}</span>
+          <span className="text-foreground/40 text-[10px] font-bold uppercase">{event.teamSize}</span>
         </div>
       </div>
     </div>

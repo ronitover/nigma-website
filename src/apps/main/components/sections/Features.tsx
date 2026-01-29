@@ -29,10 +29,10 @@ const featuresData: FeatureCardType[] = [
 
 const Features: React.FC = () => {
   return (
-    <section className="mx-auto max-w-[1200px] px-6 py-20">
-      <div className="flex flex-col gap-12">
+    <section className="mx-auto max-w-[1200px] px-4 sm:px-6 py-12 sm:py-16 md:py-20">
+      <div className="flex flex-col gap-8 sm:gap-12">
         <div className="flex flex-col gap-4 text-center md:text-left">
-          <h2 className="text-white tracking-tight text-4xl md:text-5xl font-black uppercase">
+          <h2 className="text-foreground tracking-tight text-3xl sm:text-4xl md:text-5xl font-black uppercase">
             Divine Tech Pillars
           </h2>
           <div className="h-1 w-20 bg-primary mx-auto md:mx-0"></div>
@@ -41,7 +41,7 @@ const Features: React.FC = () => {
             and creativity.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {featuresData.map((feature, index) => (
             <FeatureCard key={index} feature={feature} />
           ))}

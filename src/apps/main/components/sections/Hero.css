@@ -26,3 +26,41 @@
 .hero-mounted .hero-title {
   transform: translateY(0);
 }
+
+.hero-section {
+  min-height: 100vh;
+}
+
+.hero-content-inner {
+  max-width: 100%;
+}
+
+.hero-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hero-logo {
+  max-width: min(82vw, calc(34rem + 30px));
+}
+
+@media (min-width: 768px) {
+  .hero-logo {
+    max-width: min(75vw, calc(38rem + 30px));
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions button {
+    min-width: 0 !important;
+    width: 100%;
+  }
+}

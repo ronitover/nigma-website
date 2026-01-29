@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { eventDetails, getTeamSizeDisplay } from '../../data/eventDetails';
 import './Events.css';
 import '../../pages/EventsArena.css';
 
@@ -81,13 +82,13 @@ const Events: React.FC = () => {
 
   return (
     <section className="w-full flex justify-center">
-      <div className="grid grid-cols-12 gap-8 max-w-6xl w-full px-6 py-10">
+      <div className="grid grid-cols-12 gap-6 sm:gap-8 max-w-6xl w-full px-4 sm:px-6 py-8 sm:py-10">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-10 col-span-12">
           <span className="text-primary text-sm font-bold uppercase tracking-[0.3em] mb-2">
             Mythic Challenges
           </span>
-          <h2 className="text-white text-4xl md:text-5xl font-black leading-tight tracking-tight px-4 pb-3">
+          <h2 className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight px-2 sm:px-4 pb-3">
             The Trials of Ragnarok
           </h2>
           <div className="h-1 w-24 bg-primary rounded-full"></div>
@@ -123,7 +124,7 @@ const Events: React.FC = () => {
                 <div className="arena-card-overlay"></div>
                 <div className="arena-card-group-badge">
                   <span className="material-symbols-outlined">groups</span>
-                  <span>3</span>
+                  <span>{getTeamSizeDisplay(eventDetails.find((ed) => ed.id === event.id) ?? null)}</span>
                 </div>
                 <div className="arena-card-badge">{event.category}</div>
               </div>

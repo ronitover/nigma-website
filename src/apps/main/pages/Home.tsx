@@ -8,6 +8,7 @@ import HackathonBanner from '../components/sections/HackathonBanner';
 import Gallery from '../components/sections/Gallery';
 import InfoMap from '../components/sections/InfoMap';
 import ConstellationBackground from '../../../shared/components/ConstellationBackground';
+import ScrollReveal from '../../../shared/components/ScrollReveal';
 import landingBackground from '../../../assets/images/bg.png';
 
 const Home: React.FC = () => {
@@ -37,12 +38,22 @@ const Home: React.FC = () => {
         <Header />
         <main className="flex-1">
           <Hero />
-          <div className="mt-16 md:mt-28 -translate-y-[3px] transform">
-            <CountdownTimer targetDate={eventDate} />
-            <Events />
-            <HackathonBanner />
-            <Gallery />
-            <InfoMap />
+          <div className="pt-8 sm:pt-12 md:pt-16 px-0 overflow-x-hidden">
+            <ScrollReveal direction="up" delay={0} amount={0.12} once={false}>
+              <CountdownTimer targetDate={eventDate} />
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={80} amount={0.12} once={false}>
+              <Events />
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={80} amount={0.12} once={false}>
+              <HackathonBanner />
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={80} amount={0.12} once={false}>
+              <Gallery />
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={80} amount={0.12} once={false}>
+              <InfoMap />
+            </ScrollReveal>
           </div>
         </main>
         <Footer />

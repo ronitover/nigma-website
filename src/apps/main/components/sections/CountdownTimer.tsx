@@ -53,16 +53,16 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   };
 
   return (
-    <section className="py-12 countdown-ice-bg">
-      <div className="mx-auto max-w-[960px] px-6">
-        <div className="flex flex-col items-center gap-6">
-          <h3 className="text-primary text-sm font-bold uppercase tracking-[0.3em]">
+    <section className="py-8 sm:py-12 countdown-ice-bg">
+      <div className="mx-auto max-w-[960px] px-4 sm:px-6">
+        <div className="flex flex-col items-center gap-4 sm:gap-6">
+          <h3 className="text-primary text-xs sm:text-sm font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-center">
             The Storm Approaches In
           </h3>
-          <div className="flex gap-4 md:gap-8 w-full">
+          <div className="flex gap-2 sm:gap-4 md:gap-8 w-full max-w-full overflow-hidden">
             <div className="flex grow basis-0 flex-col items-stretch gap-3">
-              <div className="flex h-20 grow items-center justify-center rounded-xl bg-[#181611] border border-[#544c3b] shadow-inner">
-                <p className="text-primary text-3xl md:text-5xl font-black leading-tight font-display">
+              <div className="flex h-16 sm:h-20 min-w-0 grow items-center justify-center rounded-lg sm:rounded-xl bg-background-dark border border-[#544c3b] shadow-inner">
+                <p className="text-primary text-2xl sm:text-3xl md:text-5xl font-black leading-tight font-display">
                   {formatNumber(timeLeft.days)}
                 </p>
               </div>
@@ -74,8 +74,8 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
             </div>
 
             <div className="flex grow basis-0 flex-col items-stretch gap-3">
-              <div className="flex h-20 grow items-center justify-center rounded-xl bg-[#181611] border border-[#544c3b] shadow-inner">
-                <p className="text-primary text-3xl md:text-5xl font-black leading-tight">
+              <div className="flex h-16 sm:h-20 min-w-0 grow items-center justify-center rounded-lg sm:rounded-xl bg-background-dark border border-[#544c3b] shadow-inner">
+                <p className="text-primary text-2xl sm:text-3xl md:text-5xl font-black leading-tight">
                   {formatNumber(timeLeft.hours)}
                 </p>
               </div>
@@ -87,8 +87,8 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
             </div>
 
             <div className="flex grow basis-0 flex-col items-stretch gap-3">
-              <div className="flex h-20 grow items-center justify-center rounded-xl bg-[#181611] border border-[#544c3b] shadow-inner">
-                <p className="text-primary text-3xl md:text-5xl font-black leading-tight">
+              <div className="flex h-16 sm:h-20 min-w-0 grow items-center justify-center rounded-lg sm:rounded-xl bg-background-dark border border-[#544c3b] shadow-inner">
+                <p className="text-primary text-2xl sm:text-3xl md:text-5xl font-black leading-tight">
                   {formatNumber(timeLeft.minutes)}
                 </p>
               </div>
@@ -100,8 +100,8 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
             </div>
 
             <div className="flex grow basis-0 flex-col items-stretch gap-3">
-              <div className="flex h-20 grow items-center justify-center rounded-xl bg-[#181611] border border-[#544c3b] shadow-inner">
-                <p className="text-primary text-3xl md:text-5xl font-black leading-tight">
+              <div className="flex h-16 sm:h-20 min-w-0 grow items-center justify-center rounded-lg sm:rounded-xl bg-background-dark border border-[#544c3b] shadow-inner">
+                <p className="text-primary text-2xl sm:text-3xl md:text-5xl font-black leading-tight">
                   {formatNumber(timeLeft.seconds)}
                 </p>
               </div>

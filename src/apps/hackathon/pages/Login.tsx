@@ -15,7 +15,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-background-dark font-display text-white selection:bg-primary/30">
+    <div className="min-h-screen overflow-hidden bg-background-dark font-display text-foreground selection:bg-primary/30">
       {/* Background Layer */}
       <div className="fixed inset-0 z-0">
         <div
@@ -24,7 +24,7 @@ const Login: React.FC = () => {
             backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkh0skdlUzoKmp1_2RKnNYswMcuOhjh5IzIqzxpf84sYm9L_zFsH7kF_KnQbD2r0Kg8Qn-QO2gm39Q_nqCSpZWaZ4AXCMNj2Iy086RFG1WqJPPVf8XmHfim8ZhYnasOguZS6T1ZrYUkF2FJObsLHvCZGZPS9vv1wMaNDW5--4Xpi_xmqKmAwmlWfIfljHRnh889M0hPv0vIYkE1OQFzYpI4X_yh0e17YyZv4BYo2sVcdztu8J80eu4JGyo0wMQqkZYFIZz3JuvPBLq")`,
           }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background-dark/50 via-transparent to-background-dark/70"></div>
         <div className="absolute inset-0 bg-primary/5 mix-blend-color-dodge"></div>
       </div>
 
@@ -34,10 +34,10 @@ const Login: React.FC = () => {
           <img 
             src={headerLogo} 
             alt="NITTE Logo" 
-            className="h-10 sm:h-12 w-auto object-contain drop-shadow-lg"
+            className="h-[50px] sm:h-[58px] w-auto object-contain drop-shadow-lg"
           />
         </div>
-        <button className="flex items-center gap-1 sm:gap-2 rounded-full border border-primary/40 bg-black/40 backdrop-blur-md px-3 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-primary transition-all hover:bg-primary hover:text-background-dark hover:border-primary">
+        <button className="flex items-center gap-1 sm:gap-2 rounded-full border border-primary/40 bg-background-dark/40 backdrop-blur-md px-3 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-primary transition-all hover:bg-primary hover:text-background-dark hover:border-primary">
           <span className="material-symbols-outlined text-sm sm:text-base">home</span>
           <span className="hidden sm:inline">Back to Home</span>
           <span className="sm:hidden">Home</span>
@@ -52,7 +52,7 @@ const Login: React.FC = () => {
             <h2 className="font-majestic text-primary text-[9px] sm:text-xs font-bold tracking-[0.4em] sm:tracking-[0.5em] uppercase mb-3 sm:mb-4 opacity-80">
               Divine Entryway
             </h2>
-            <h1 className="font-majestic text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider sm:tracking-widest text-white mb-2 leading-tight px-2">
+            <h1 className="font-majestic text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider sm:tracking-widest text-foreground mb-2 leading-tight px-2">
               THE GATES OF ASGARD AWAIT
             </h1>
             <div className="w-20 sm:w-24 h-[1px] bg-primary/40 mx-auto mt-4 sm:mt-6"></div>
@@ -70,7 +70,7 @@ const Login: React.FC = () => {
               </label>
               <div className="relative group">
                 <input
-                  className="input-high-contrast w-full rounded-xl p-3 sm:p-4 text-sm sm:text-base text-white placeholder:text-gray-500 transition-all outline-none pr-10 sm:pr-12"
+                  className="input-high-contrast w-full rounded-xl p-3 sm:p-4 text-sm sm:text-base text-foreground placeholder:text-gray-500 transition-all outline-none pr-10 sm:pr-12"
                   id="oracle-id"
                   placeholder="hero@valhalla.edu"
                   type="email"
@@ -102,7 +102,7 @@ const Login: React.FC = () => {
               </div>
               <div className="relative group">
                 <input
-                  className="input-high-contrast w-full rounded-xl p-3 sm:p-4 text-sm sm:text-base text-white placeholder:text-gray-500 transition-all outline-none pr-10 sm:pr-12"
+                  className="input-high-contrast w-full rounded-xl p-3 sm:p-4 text-sm sm:text-base text-foreground placeholder:text-gray-500 transition-all outline-none pr-10 sm:pr-12"
                   id="secret-cipher"
                   placeholder="••••••••"
                   type={showPassword ? 'text' : 'password'}
@@ -125,14 +125,14 @@ const Login: React.FC = () => {
             {/* Remember Me */}
             <div className="flex items-center gap-2 sm:gap-3 px-1">
               <input
-                className="h-4 w-4 rounded border-primary/40 bg-black/80 text-primary focus:ring-primary/50 focus:ring-offset-background-dark cursor-pointer"
+                className="h-4 w-4 rounded border-primary/40 bg-background-dark/80 text-primary focus:ring-primary/50 focus:ring-offset-background-dark cursor-pointer"
                 id="remember"
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
               />
               <label
-                className="text-xs text-gray-300 font-medium cursor-pointer hover:text-white transition-colors"
+                className="text-xs text-gray-300 font-medium cursor-pointer hover:text-foreground transition-colors"
                 htmlFor="remember"
               >
                 Bind to this device permanently
@@ -156,7 +156,7 @@ const Login: React.FC = () => {
             <p className="text-sm text-gray-300">
               New Hero?
               <a
-                className="font-bold text-primary hover:text-white transition-colors ml-1 decoration-primary/30 decoration-1 underline-offset-4"
+                className="font-bold text-primary hover:text-foreground transition-colors ml-1 decoration-primary/30 decoration-1 underline-offset-4"
                 href="#"
               >
                 Forge an Account

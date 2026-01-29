@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { getTeamSize } from '../data/eventDetails';
 import './EventDetailModal.css';
 
 interface EventPhase {
@@ -13,6 +14,7 @@ interface EventDetail {
   description: string;
   quote: string;
   icon: string;
+  teamSize?: number;
   rules: string[];
   phases: EventPhase[];
   registrationDeadline?: string;
@@ -48,39 +50,13 @@ interface RegistrationMember {
   phone: string;
 }
 
-const getTeamSizeFromRules = (event: EventDetail | null): number => {
-  if (!event || !event.rules) return 1;
-
-  const text = event.rules.join(' ').toLowerCase();
-
-  // Match "Teams of 2-4" or similar ranges
-  const rangeMatch = text.match(/teams?\s+of\s+(\d+)\s*-\s*(\d+)/);
-  if (rangeMatch) {
-    const max = parseInt(rangeMatch[2], 10);
-    return Math.min(Math.max(max, 1), 3);
-  }
-
-  // Match "Teams of 2"
-  const exactMatch = text.match(/teams?\s+of\s+(\d+)/);
-  if (exactMatch) {
-    const size = parseInt(exactMatch[1], 10);
-    return Math.min(Math.max(size, 1), 3);
-  }
-
-  // Match "up to 3"
-  const upToMatch = text.match(/up to\s+(\d+)/);
-  if (upToMatch) {
-    const size = parseInt(upToMatch[1], 10);
-    return Math.min(Math.max(size, 1), 3);
-  }
-
-  // Special phrases
-  if (text.includes('solo or duo')) {
-    return 2;
-  }
-
-  return 1;
-};
+const VARIETY_EVENT_ID = 11;
+const VARIETY_TEAM_MIN = 10;
+const VARIETY_TEAM_MAX = 17;
+const VARIETY_TEAM_OPTIONS = Array.from(
+  { length: VARIETY_TEAM_MAX - VARIETY_TEAM_MIN + 1 },
+  (_, i) => VARIETY_TEAM_MIN + i
+);
 
 const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onClose }) => {
   const [showRegistration, setShowRegistration] = React.useState(false);
@@ -90,7 +66,16 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
     { fullName: '', college: '', cityState: '', phone: '' },
   ]);
   const [currentMemberIndex, setCurrentMemberIndex] = React.useState(0);
+  /** For Variety Event only: chosen team size (10–17); null = show dropdown first. */
+  const [selectedVarietyTeamSize, setSelectedVarietyTeamSize] = React.useState<number | null>(null);
+  /** Dropdown value for Variety Event (10–17) before continuing. */
+  const [varietyDropdownValue, setVarietyDropdownValue] = React.useState(VARIETY_TEAM_MIN);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const isVarietyEvent = event?.id === VARIETY_EVENT_ID;
+  const effectiveTeamSize = isVarietyEvent
+    ? (selectedVarietyTeamSize ?? 0)
+    : getTeamSize(event);
   const starsRef = useRef<Star[]>([]);
   const connectionsRef = useRef<Connection[]>([]);
   const animationFrame = useRef<number | undefined>(undefined);
@@ -105,6 +90,10 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
   };
 
   const handleBackToDetails = () => {
+    if (event?.id === VARIETY_EVENT_ID) {
+      setSelectedVarietyTeamSize(null);
+      setVarietyDropdownValue(VARIETY_TEAM_MIN);
+    }
     setIsFlipping(true);
     setTimeout(() => {
       setShowRegistration(false);
@@ -112,10 +101,23 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
     }, 300);
   };
 
+  const handleVarietyCountContinue = () => {
+    const count = varietyDropdownValue;
+    setSelectedVarietyTeamSize(count);
+    setMembers(
+      Array.from({ length: count }, () => ({
+        fullName: '',
+        college: '',
+        cityState: '',
+        phone: '',
+      }))
+    );
+    setCurrentMemberIndex(0);
+  };
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const teamSize = getTeamSizeFromRules(event);
-    const effectiveSize = Math.max(1, Math.min(teamSize, members.length || teamSize));
+    const effectiveSize = Math.max(1, effectiveTeamSize);
     const isLastMember = currentMemberIndex >= effectiveSize - 1;
 
     if (!isLastMember) {
@@ -164,16 +166,22 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
   // Reset registration members when event or modal opens
   useEffect(() => {
     if (!event || !isOpen) return;
-    const teamSize = getTeamSizeFromRules(event);
-    const effectiveSize = Math.max(1, Math.min(teamSize, 3));
-    setMembers(
-      Array.from({ length: effectiveSize }, () => ({
-        fullName: '',
-        college: '',
-        cityState: '',
-        phone: '',
-      })),
-    );
+    if (event.id === VARIETY_EVENT_ID) {
+      setSelectedVarietyTeamSize(null);
+      setVarietyDropdownValue(VARIETY_TEAM_MIN);
+      setMembers([{ fullName: '', college: '', cityState: '', phone: '' }]);
+    } else {
+      const teamSize = getTeamSize(event);
+      const effectiveSize = Math.max(1, Math.min(teamSize, 3));
+      setMembers(
+        Array.from({ length: effectiveSize }, () => ({
+          fullName: '',
+          college: '',
+          cityState: '',
+          phone: '',
+        })),
+      );
+    }
     setCurrentMemberIndex(0);
   }, [event, isOpen]);
 
@@ -320,13 +328,13 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
         );
         
         if (star.color === 'blue') {
-          gradient.addColorStop(0, `rgba(147, 197, 253, ${currentOpacity})`);
-          gradient.addColorStop(0.4, `rgba(59, 130, 246, ${currentOpacity * 0.6})`);
-          gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+          gradient.addColorStop(0, `rgba(129, 198, 233, ${currentOpacity})`);
+          gradient.addColorStop(0.4, `rgba(79, 163, 209, ${currentOpacity * 0.6})`);
+          gradient.addColorStop(1, 'rgba(79, 163, 209, 0)');
         } else {
-          gradient.addColorStop(0, `rgba(255, 235, 157, ${currentOpacity})`);
-          gradient.addColorStop(0.4, `rgba(244, 175, 37, ${currentOpacity * 0.6})`);
-          gradient.addColorStop(1, 'rgba(244, 175, 37, 0)');
+          gradient.addColorStop(0, `rgba(255, 235, 200, ${currentOpacity})`);
+          gradient.addColorStop(0.4, `rgba(201, 162, 77, ${currentOpacity * 0.6})`);
+          gradient.addColorStop(1, 'rgba(201, 162, 77, 0)');
         }
 
         ctx.fillStyle = gradient;
@@ -364,13 +372,13 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
           );
           
           if (star1.color === 'blue') {
-            gradient.addColorStop(0, `rgba(59, 130, 246, ${lineOpacity * star1.opacity * 0.8})`);
-            gradient.addColorStop(0.5, `rgba(96, 165, 250, ${lineOpacity * 0.9})`);
-            gradient.addColorStop(1, `rgba(59, 130, 246, ${lineOpacity * star2.opacity * 0.8})`);
+            gradient.addColorStop(0, `rgba(79, 163, 209, ${lineOpacity * star1.opacity * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(129, 198, 233, ${lineOpacity * 0.9})`);
+            gradient.addColorStop(1, `rgba(79, 163, 209, ${lineOpacity * star2.opacity * 0.8})`);
           } else {
-            gradient.addColorStop(0, `rgba(244, 175, 37, ${lineOpacity * star1.opacity * 0.8})`);
-            gradient.addColorStop(0.5, `rgba(255, 215, 97, ${lineOpacity * 0.9})`);
-            gradient.addColorStop(1, `rgba(244, 175, 37, ${lineOpacity * star2.opacity * 0.8})`);
+            gradient.addColorStop(0, `rgba(201, 162, 77, ${lineOpacity * star1.opacity * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(230, 210, 150, ${lineOpacity * 0.9})`);
+            gradient.addColorStop(1, `rgba(201, 162, 77, ${lineOpacity * star2.opacity * 0.8})`);
           }
 
           ctx.strokeStyle = gradient;
@@ -520,20 +528,69 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
             ) : (
               /* Registration Form */
               <div className="scroll-content registration-form">
-                {/* Header */}
-                <div className="registration-header">
-                  <div className="registration-icon-wrapper">
-                    <span className="material-symbols-outlined registration-icon">history_edu</span>
+                {isVarietyEvent && selectedVarietyTeamSize === null ? (
+                  /* Variety Event: choose total participants first */
+                  <div className="registration-header">
+                    <div className="registration-icon-wrapper">
+                      <span className="material-symbols-outlined registration-icon">groups</span>
+                    </div>
+                    <h1 className="registration-title">Variety Event — Team Size</h1>
+                    <p className="registration-subtitle">
+                      Select total number of participants (min 10, max 17)
+                    </p>
+                    <div className="registration-divider"></div>
                   </div>
-                  <h1 className="registration-title">Enlist Your Name</h1>
-                  <p className="registration-subtitle">
-                    {currentMemberIndex === 0 ? 'Team Leader' : `Member ${currentMemberIndex + 1}`}{' '}
-                    Registration
-                  </p>
-                  <div className="registration-divider"></div>
-                </div>
+                ) : (
+                  /* Header for member form */
+                  <div className="registration-header">
+                    <div className="registration-icon-wrapper">
+                      <span className="material-symbols-outlined registration-icon">history_edu</span>
+                    </div>
+                    <h1 className="registration-title">Enlist Your Name</h1>
+                    <p className="registration-subtitle">
+                      {isVarietyEvent
+                        ? `Participant ${currentMemberIndex + 1} of ${effectiveTeamSize}`
+                        : currentMemberIndex === 0
+                          ? 'Team Leader'
+                          : `Member ${currentMemberIndex + 1}`}{' '}
+                      Registration
+                    </p>
+                    <div className="registration-divider"></div>
+                  </div>
+                )}
 
-                {/* Form */}
+                {isVarietyEvent && selectedVarietyTeamSize === null ? (
+                  <div className="registration-form-fields">
+                    <div className="form-field">
+                      <label className="form-label">Total number of participants</label>
+                      <select
+                        className="form-input form-select"
+                        value={varietyDropdownValue}
+                        onChange={(e) => setVarietyDropdownValue(Number(e.target.value))}
+                      >
+                        {VARIETY_TEAM_OPTIONS.map((n) => (
+                          <option key={n} value={n}>
+                            {n} participants
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="form-submit-wrapper">
+                      <button
+                        type="button"
+                        className="form-submit-btn"
+                        onClick={handleVarietyCountContinue}
+                      >
+                        <span className="form-submit-overlay"></span>
+                        <div className="form-submit-content">
+                          <span className="material-symbols-outlined">arrow_forward</span>
+                          Continue — Enter participant details
+                          <span className="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                ) : (
                 <form className="registration-form-fields" onSubmit={handleFormSubmit}>
                   <div className="form-field">
                     <label className="form-label">Full Name</label>
@@ -589,17 +646,15 @@ const EventDetailModal: React.FC<EventDetailModalProps> = ({ event, isOpen, onCl
                       <span className="form-submit-overlay"></span>
                       <div className="form-submit-content">
                         <span className="material-symbols-outlined">swords</span>
-                        {(() => {
-                          const teamSize = getTeamSizeFromRules(event);
-                          const effectiveSize = Math.max(1, Math.min(teamSize, members.length || teamSize));
-                          const isLastMember = currentMemberIndex >= effectiveSize - 1;
-                          return isLastMember ? 'Submit Registration' : 'Next Member';
-                        })()}
+                        {currentMemberIndex >= Math.max(1, effectiveTeamSize) - 1
+                          ? 'Submit Registration'
+                          : 'Next Member'}
                         <span className="material-symbols-outlined">swords</span>
                       </div>
                     </button>
                   </div>
                 </form>
+                )}
 
                 <div className="registration-disclaimer">
                   <p>By joining, you agree to the laws of the Arena and the fate of the Norns.</p>

@@ -13,9 +13,29 @@ export interface EventDetail {
   quote: string;
   icon: string;
   heads?: string[];
+  /** Number of participants per team (1 = solo, 2 = duo, etc.). Set manually per event. Use max when range is set. */
+  teamSize: number;
+  /** Optional range for badge display (e.g. Variety 10–17). */
+  teamSizeMin?: number;
+  teamSizeMax?: number;
   rules: string[];
   phases: EventPhase[];
   registrationDeadline?: string;
+}
+
+/** Returns the event's team size (max when range set), or 1 if event is null/undefined. */
+export function getTeamSize(event: { teamSize?: number; teamSizeMax?: number } | null): number {
+  if (!event) return 1;
+  return event.teamSizeMax ?? event.teamSize ?? 1;
+}
+
+/** Returns team size for badge: "10-17" when range set, otherwise the number. */
+export function getTeamSizeDisplay(event: { teamSize?: number; teamSizeMin?: number; teamSizeMax?: number } | null): string | number {
+  if (!event) return 1;
+  if (event.teamSizeMin != null && event.teamSizeMax != null) {
+    return `${event.teamSizeMin}-${event.teamSizeMax}`;
+  }
+  return event.teamSize ?? 1;
 }
 
 export const eventDetails: EventDetail[] = [
@@ -27,7 +47,8 @@ export const eventDetails: EventDetail[] = [
     quote: 'Prove your leadership, strategy and people skills in this management simulation.',
     icon: 'grade',
     heads: ['Vishak', 'Santhosh'],
-    rules: ['Teams of 2', 'Round-based case studies and live presentations'],
+    teamSize: 1,
+    rules: ['Solo event', 'Round-based case studies and live presentations'],
     phases: [
       { number: 'I', title: 'Prelims', description: 'Online case submission' },
       { number: 'II', title: 'Finals', description: 'On-site presentations and Q&A' }
@@ -40,6 +61,7 @@ export const eventDetails: EventDetail[] = [
     quote: 'Show your financial acumen and trading instincts.',
     icon: 'attach_money',
     heads: ['Prarthana', 'Bharath'],
+    teamSize: 2,
     rules: ['Teams of 2', 'No external assistance during live rounds'],
     phases: [{ number: 'I', title: 'Simulation', description: 'Live trading rounds' }]
   },
@@ -50,6 +72,7 @@ export const eventDetails: EventDetail[] = [
     quote: 'Craft campaigns that move people and markets.',
     icon: 'campaign',
     heads: ['Prapthi', 'Ayshal'],
+    teamSize: 2,
     rules: ['Teams of 2', 'Creative campaign deliverables required'],
     phases: [{ number: 'I', title: 'Campaign Brief', description: 'Deliverables and presentation' }]
   },
@@ -60,6 +83,7 @@ export const eventDetails: EventDetail[] = [
     quote: 'Test your people skills and organisational judgment.',
     icon: 'group',
     heads: ['Pavani', 'Sudeeksha'],
+    teamSize: 2,
     rules: ['Teams of 2', 'Role-play and case study rounds'],
     phases: [{ number: 'I', title: 'Role Play', description: 'Live HR scenarios' }]
   },
@@ -70,7 +94,8 @@ export const eventDetails: EventDetail[] = [
     quote: 'Showcase logistics, creativity and management skills.',
     icon: 'event',
     heads: ['Rishika', 'Viola'],
-    rules: ['Teams of 2-4', 'Presentation of event plan and budget'],
+    teamSize: 2,
+    rules: ['Teams of 2', 'Presentation of event plan and budget'],
     phases: [{ number: 'I', title: 'Plan', description: 'Submit event plan' }, { number: 'II', title: 'Execute', description: 'On-site mock execution' }]
   },
 
@@ -82,6 +107,7 @@ export const eventDetails: EventDetail[] = [
     quote: 'Speed, accuracy and algorithmic thinking win the day.',
     icon: 'code',
     heads: ['Leesha', 'Lavisha'],
+    teamSize: 2,
     rules: ['Teams of 2', 'Online preliminary followed by on-site finals'],
     phases: [{ number: 'I', title: 'Online Quals', description: 'Algorithmic problem set' }, { number: 'II', title: 'Finals', description: 'On-site coding showdown' }]
   },
@@ -92,7 +118,8 @@ export const eventDetails: EventDetail[] = [
     quote: 'Bring your best team and reflexes to the arena.',
     icon: 'sports_esports',
     heads: ['Vikas', 'Adithya Shenoy'],
-    rules: ['Check game-specific team sizes', 'Fair-play required'],
+    teamSize: 4,
+    rules: ['Teams of 4', 'Fair-play required'],
     phases: [{ number: 'I', title: 'Online Quals', description: 'Determine top teams' }, { number: 'II', title: 'On-site Bracket', description: 'Elimination rounds' }]
   },
   {
@@ -102,7 +129,8 @@ export const eventDetails: EventDetail[] = [
     quote: 'Solve riddles, decode clues and race to the treasure.',
     icon: 'search',
     heads: ['Sudeeksha', 'Manisha'],
-    rules: ['Teams of 2-4', 'Follow event marshals and safety rules'],
+    teamSize: 2,
+    rules: ['Teams of 2', 'Follow event marshals and safety rules'],
     phases: [{ number: 'I', title: 'Hunt', description: 'Timed treasure hunt across campus' }]
   },
   {
@@ -112,7 +140,8 @@ export const eventDetails: EventDetail[] = [
     quote: 'From logic puzzles to number theory — endurance matters.',
     icon: 'calculate',
     heads: ['Clanita', 'Shruthi'],
-    rules: ['Teams of 2', 'Multiple timed rounds'],
+    teamSize: 4,
+    rules: ['Teams of 4', 'Multiple timed rounds'],
     phases: [{ number: 'I', title: 'Seven Rounds', description: 'Each round focuses on a different math domain' }]
   },
   {
@@ -122,6 +151,9 @@ export const eventDetails: EventDetail[] = [
     quote: 'Create, prototype and present — build what matters.',
     icon: 'developer_mode',
     heads: ['Royston', 'Prarthana'],
+    teamSize: 4,
+    teamSizeMin: 2,
+    teamSizeMax: 4,
     rules: ['Teams of up to 4', '24-48 hour build window depending on track'],
     phases: [{ number: 'I', title: 'Sprint', description: 'Hack for the allotted time' }, { number: 'II', title: 'Demo', description: 'Pitch to judges' }]
   },
@@ -134,6 +166,9 @@ export const eventDetails: EventDetail[] = [
     quote: 'Bring any act that entertains and inspires.',
     icon: 'theaters',
     heads: ['Afreed', 'Shanola'],
+    teamSize: 17,
+    teamSizeMin: 10,
+    teamSizeMax: 17,
     rules: ['Solo or groups allowed', 'Time limits apply'],
     phases: [{ number: 'I', title: 'Auditions', description: 'Select finalists' }, { number: 'II', title: 'Showcase', description: 'Final performances' }]
   },
@@ -144,7 +179,8 @@ export const eventDetails: EventDetail[] = [
     quote: 'Craft narratives, press releases and handle interviews professionally.',
     icon: 'newspaper',
     heads: ['Trisha', 'Pranamya'],
-    rules: ['Teams of 2', 'Submission of press materials required'],
+    teamSize: 1,
+    rules: ['Solo event', 'Submission of press materials required'],
     phases: [{ number: 'I', title: 'Brief', description: 'Create press material and handle live Q&A' }]
   },
   {
@@ -154,7 +190,8 @@ export const eventDetails: EventDetail[] = [
     quote: 'Turn trash into treasure with creativity and sustainability.',
     icon: 'recycling',
     heads: ['Riya', 'Shreya'],
-    rules: ['Teams of up to 3', 'Materials should be largely recycled'],
+    teamSize: 2,
+    rules: ['Teams of 2', 'Materials should be largely recycled'],
     phases: [{ number: 'I', title: 'Create', description: 'On-site build and presentation' }]
   },
   {
@@ -164,7 +201,8 @@ export const eventDetails: EventDetail[] = [
     quote: 'Tell a story in 30–60 seconds.',
     icon: 'movie',
     heads: ['Manish', 'Dhanush'],
-    rules: ['Solo or duo', 'Original content only'],
+    teamSize: 1,
+    rules: ['Solo', 'Original content only'],
     phases: [{ number: 'I', title: 'Submission', description: 'Upload your reel' }, { number: 'II', title: 'Screening', description: 'Final judging' }]
   },
   {
@@ -174,7 +212,8 @@ export const eventDetails: EventDetail[] = [
     quote: 'Colors, patterns and imagination.',
     icon: 'brush',
     heads: ['Akshay N', 'Prajna'],
-    rules: ['Solo artists', 'Hygiene and safety rules apply'],
+    teamSize: 2,
+    rules: ['Teams of 2', 'Hygiene and safety rules apply'],
     phases: [{ number: 'I', title: 'Live Paint', description: 'Timed face-painting round' }]
   }
 ];

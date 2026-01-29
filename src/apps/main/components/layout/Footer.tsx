@@ -36,12 +36,12 @@ const Footer: React.FC = () => {
       </footer>
 
       {isTechTeamOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
-          <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-[2rem] border border-white/10 bg-[#050a15]/95 p-4 md:p-8">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background-dark/70 backdrop-blur-sm px-4">
+          <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-[2rem] border border-foreground/10 bg-[#0B1C2D]/95 p-4 md:p-8">
             <button
               type="button"
               onClick={() => setIsTechTeamOpen(false)}
-              className="absolute right-4 top-4 inline-flex items-center justify-center rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white hover:bg-white/10"
+              className="absolute right-4 top-4 inline-flex items-center justify-center rounded-full border border-white/20 bg-background-dark/40 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-foreground hover:bg-foreground/10"
             >
               Close
             </button>

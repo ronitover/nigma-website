@@ -7,7 +7,7 @@ import CursorTrail from '../../shared/components/CursorTrail';
 const MainApp: React.FC = () => {
   return (
     <Router>
-      <div className="bg-background-light dark:bg-background-dark font-display text-white transition-colors duration-300">
+      <div className="bg-background-light dark:bg-background-dark font-display text-foreground transition-colors duration-300">
         <CursorTrail />
         <Routes>
           <Route path="/" element={<Home />} />

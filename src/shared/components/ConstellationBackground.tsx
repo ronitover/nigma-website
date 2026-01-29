@@ -154,13 +154,13 @@ const ConstellationBackground: React.FC = () => {
         );
         
         if (star.color === 'blue') {
-          gradient.addColorStop(0, `rgba(147, 197, 253, ${currentOpacity})`);
-          gradient.addColorStop(0.4, `rgba(59, 130, 246, ${currentOpacity * 0.6})`);
-          gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+          gradient.addColorStop(0, `rgba(129, 198, 233, ${currentOpacity})`);
+          gradient.addColorStop(0.4, `rgba(79, 163, 209, ${currentOpacity * 0.6})`);
+          gradient.addColorStop(1, 'rgba(79, 163, 209, 0)');
         } else {
-          gradient.addColorStop(0, `rgba(255, 235, 157, ${currentOpacity})`);
-          gradient.addColorStop(0.4, `rgba(244, 175, 37, ${currentOpacity * 0.6})`);
-          gradient.addColorStop(1, 'rgba(244, 175, 37, 0)');
+          gradient.addColorStop(0, `rgba(255, 235, 200, ${currentOpacity})`);
+          gradient.addColorStop(0.4, `rgba(201, 162, 77, ${currentOpacity * 0.6})`);
+          gradient.addColorStop(1, 'rgba(201, 162, 77, 0)');
         }
 
         ctx.fillStyle = gradient;
@@ -198,13 +198,13 @@ const ConstellationBackground: React.FC = () => {
           );
           
           if (star1.color === 'blue') {
-            gradient.addColorStop(0, `rgba(59, 130, 246, ${lineOpacity * star1.opacity * 0.8})`);
-            gradient.addColorStop(0.5, `rgba(96, 165, 250, ${lineOpacity * 0.9})`);
-            gradient.addColorStop(1, `rgba(59, 130, 246, ${lineOpacity * star2.opacity * 0.8})`);
+            gradient.addColorStop(0, `rgba(79, 163, 209, ${lineOpacity * star1.opacity * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(129, 198, 233, ${lineOpacity * 0.9})`);
+            gradient.addColorStop(1, `rgba(79, 163, 209, ${lineOpacity * star2.opacity * 0.8})`);
           } else {
-            gradient.addColorStop(0, `rgba(244, 175, 37, ${lineOpacity * star1.opacity * 0.8})`);
-            gradient.addColorStop(0.5, `rgba(255, 215, 97, ${lineOpacity * 0.9})`);
-            gradient.addColorStop(1, `rgba(244, 175, 37, ${lineOpacity * star2.opacity * 0.8})`);
+            gradient.addColorStop(0, `rgba(201, 162, 77, ${lineOpacity * star1.opacity * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(230, 210, 150, ${lineOpacity * 0.9})`);
+            gradient.addColorStop(1, `rgba(201, 162, 77, ${lineOpacity * star2.opacity * 0.8})`);
           }
 
           ctx.strokeStyle = gradient;
